@@ -249,6 +249,28 @@ body {
     margin-bottom: 20px;
 }
 
+.profile-kicker {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 18px;
+    color: rgba(255,255,255,0.62);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 2.5px;
+}
+
+.profile-kicker::before {
+    content: '';
+    width: 34px;
+    height: 1px;
+    background: var(--gold);
+}
+
+.profile-kicker span {
+    color: var(--gold);
+}
+
 .hero-content h1 {
     font-size: clamp(2.5rem, 5vw, 4.5rem);
     font-weight: 900;
@@ -312,6 +334,29 @@ body {
 .btn-secondary:hover {
     border-color: var(--gold);
     color: var(--gold);
+}
+
+.service-pillars {
+    display: grid;
+    grid-template-columns: repeat(4, max-content);
+    gap: 10px;
+    margin-top: 24px;
+}
+
+.service-pillars span {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    padding: 7px 10px;
+    color: rgba(255,255,255,0.68);
+    border-left: 1px solid rgba(212,168,83,0.55);
+    font-size: 11px;
+    font-weight: 600;
+}
+
+.service-pillars i {
+    color: var(--gold);
+    font-size: 12px;
 }
 
 .hero-stats {
@@ -1162,13 +1207,24 @@ section {
 
 /* ===== PRINT STYLES ===== */
 @media print {
-    .menu-toggle, .nav-menu, .hero-buttons .btn-secondary,
+    .menu-toggle, .nav-menu, .hero-actions,
     .footer-socials, .contact-form, .floating-card, .pdf-download-btn {
         display: none !important;
     }
+
+    @page {
+        size: A4;
+        margin: 14mm;
+    }
     
-    .hero-grid, .hero-bg, .vision-mission::before {
+    .hero-grid, .vision-mission::before {
         display: none !important;
+    }
+
+    .hero-bg {
+        display: block !important;
+        print-color-adjust: exact !important;
+        -webkit-print-color-adjust: exact !important;
     }
     
     .header {
@@ -1212,6 +1268,13 @@ section {
         break-inside: avoid;
         page-break-inside: avoid;
     }
+
+    .capability-card,
+    .contact-item,
+    .about-info-item {
+        break-inside: avoid;
+        page-break-inside: avoid;
+    }
     
     .hero-stats .stat {
         background: rgba(255,255,255,0.05) !important;
@@ -1245,6 +1308,10 @@ section {
     
     .hero-content .subtitle {
         margin: 0 auto 30px;
+    }
+
+    .service-pillars {
+        justify-content: center;
     }
 
     .hero-actions {
@@ -1309,6 +1376,12 @@ section {
         font-size: clamp(2.1rem, 10vw, 3.3rem);
     }
 
+    .profile-kicker {
+        justify-content: center;
+        font-size: 9px;
+        letter-spacing: 1.7px;
+    }
+
     .hero-content .subtitle {
         font-size: 1rem;
         line-height: 1.65;
@@ -1318,6 +1391,17 @@ section {
         flex-direction: column;
         align-items: stretch;
         margin-top: 22px;
+    }
+
+    .service-pillars {
+        grid-template-columns: 1fr 1fr;
+        gap: 6px;
+        text-align: left;
+    }
+
+    .service-pillars span {
+        padding: 7px 8px;
+        font-size: 10px;
     }
 
     .btn-primary,
@@ -1465,5 +1549,104 @@ section {
         left: 15px;
         right: 15px;
         justify-content: center;
+    }
+}
+
+/* ===== PDF DOCUMENT LAYOUT ===== */
+@media print {
+    @page {
+        size: A4;
+        margin: 12mm;
+    }
+
+    body {
+        line-height: 1.45;
+    }
+
+    .hero {
+        min-height: 0 !important;
+        padding: 0 !important;
+        page-break-after: always;
+    }
+
+    .hero .container {
+        min-height: 0 !important;
+        padding: 25px 20px !important;
+    }
+
+    section {
+        min-height: 0 !important;
+        padding: 28px 0 !important;
+        page-break-inside: auto;
+        page-break-after: always;
+    }
+
+    .about,
+    .services,
+    .capabilities,
+    .vision-mission,
+    .contact {
+        page-break-before: auto;
+    }
+
+    .contact {
+        page-break-after: auto !important;
+    }
+
+    .section-header {
+        margin-bottom: 24px !important;
+    }
+
+    .section-header h2 {
+        font-size: 25px !important;
+    }
+
+    .section-header p,
+    .about-content p,
+    .contact-info p {
+        font-size: 11px !important;
+        line-height: 1.5 !important;
+    }
+
+    .about-image .image-placeholder,
+    .about-image .image-placeholder img {
+        height: 190px !important;
+    }
+
+    .service-card,
+    .capability-card,
+    .vm-card,
+    .contact-item,
+    .about-info-item {
+        page-break-inside: avoid;
+    }
+
+    .service-card,
+    .capability-card,
+    .vm-card,
+    .contact-item {
+        padding: 16px !important;
+    }
+
+    .service-card > img {
+        height: 105px !important;
+    }
+
+    .service-card p,
+    .service-features li,
+    .capability-card p,
+    .vm-card p,
+    .vm-card ul li,
+    .value-item p {
+        font-size: 10px !important;
+        line-height: 1.4 !important;
+    }
+
+    .partner-logo {
+        height: 70px !important;
+    }
+
+    .contact-grid {
+        display: block !important;
     }
 }

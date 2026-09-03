@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Our Capture - Corporate Profile</title>
+    <title>Our Capture | Corporate Profile</title>
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
@@ -11,11 +11,16 @@
     
     <style>
         @media print {
-            .menu-toggle, .nav-menu, .footer-socials, .contact-form, .floating-card, .pdf-download-btn {
+            .menu-toggle, .nav-menu, .footer-socials, .contact-form, .floating-card, .hero-actions, .pdf-download-btn {
                 display: none !important;
             }
-            .hero-grid, .hero-bg, .vision-mission::before {
+            .hero-grid, .vision-mission::before {
                 display: none !important;
+            }
+            .hero-bg {
+                display: block !important;
+                print-color-adjust: exact !important;
+                -webkit-print-color-adjust: exact !important;
             }
             .header {
                 position: static !important;
@@ -23,11 +28,13 @@
                 padding: 20px 0 !important;
             }
             .hero {
-                min-height: auto !important;
-                padding: 60px 0 !important;
+                min-height: 0 !important;
+                padding: 0 !important;
+                page-break-after: always;
             }
             .hero .container {
-                padding: 40px 20px !important;
+                min-height: 0 !important;
+                padding: 25px 20px !important;
             }
             .hero-visual .camera-icon {
                 opacity: 0.1 !important;
@@ -35,7 +42,8 @@
             }
             section {
                 padding: 50px 0 !important;
-                page-break-inside: avoid;
+                page-break-inside: auto;
+                page-break-after: always;
             }
             .vision-mission {
                 background: #0a0a1a !important;
@@ -91,6 +99,11 @@
             box-shadow: 0 15px 50px rgba(212, 168, 83, 0.5);
         }
         @media print {
+            @page {
+                size: A4;
+                margin: 14mm;
+            }
+
             .pdf-download-btn {
                 display: none !important;
             }
@@ -99,8 +112,8 @@
 </head>
 <body>
     
-    <button onclick="window.print()" class="pdf-download-btn">
-        <i class="fas fa-file-pdf"></i> Download PDF
+    <button onclick="window.print()" class="pdf-download-btn" type="button" aria-label="Open the print dialog to save the company profile as a PDF">
+        <i class="fas fa-file-pdf" aria-hidden="true"></i> Save as PDF
     </button>
     
     <!-- ===== HEADER ===== -->
@@ -134,17 +147,24 @@
         
         <div class="container">
             <div class="hero-content">
+                <div class="profile-kicker"><span>OUR CAPTURE</span> COMPANY PROFILE</div>
                 <div class="hero-badge">Est. 2019 | B-BBEE Level 1</div>
                 <h1>
-                    Professional <br>
-                    <span class="highlight">Visual Solutions</span> <br>
-                    For Business & Events
+                    Stories that move <br>
+                    <span class="highlight">business forward.</span>
                 </h1>
                 <p class="subtitle">
-                    Our Capture is a premier photography, videography, and events company 
-                    and technology development solutions partner dedicated to helping
-                    corporate clients, events, and strategic partners across South Africa.
+                    Our Capture creates powerful visual experiences through photography,
+                    videography, events, and corporate content. We help organisations look
+                    confident, connect with people, and make every moment count.
                 </p>
+
+                <div class="service-pillars" aria-label="Our core services">
+                    <span><i class="fas fa-camera" aria-hidden="true"></i> Photography</span>
+                    <span><i class="fas fa-video" aria-hidden="true"></i> Videography</span>
+                    <span><i class="fas fa-calendar-check" aria-hidden="true"></i> Events</span>
+                    <span><i class="fas fa-building" aria-hidden="true"></i> Corporate</span>
+                </div>
 
                 <div class="hero-actions">
                     <a href="#contact" class="btn-primary"><i class="fas fa-arrow-right"></i> Start a Conversation</a>
@@ -220,6 +240,11 @@
                         content that drives engagement, builds brands, and creates lasting impressions. 
                         Our commitment to excellence and innovation has earned us a reputation for 
                         reliability and superior quality.
+                    </p>
+                    <p>
+                        Our partnership with Tech Dev Solutions strengthens the way we support modern
+                        businesses, combining Our Capture's visual expertise with trusted technology
+                        development solutions when a project calls for both.
                     </p>
                     
                     <div class="about-info-grid">
@@ -348,7 +373,7 @@
             <div class="section-header">
                 <span class="tag">Strategic Capabilities</span>
                 <h2>Why Partner With <span>Our Capture</span></h2>
-                <p>Value proposition for investors, partners, and stakeholders</p>
+                <p>Creative excellence from Our Capture, strengthened by trusted corporate partnerships</p>
             </div>
             
             <div class="capabilities-grid">
@@ -369,7 +394,7 @@
                         <img class="partner-logo" src="images/tech-dev-logo.png" alt="Tech Dev Solutions">
                         <span>Visit Tech Dev Solutions <i class="fas fa-external-link-alt" aria-hidden="true"></i></span>
                     </a>
-                    <p>We collaborate with corporate partners, agencies, and technology teams to create mutually beneficial solutions and expand capabilities.</p>
+                    <p>Our Capture leads with photography, videography, events, and corporate services. We partner with Tech Dev Solutions when clients also need dependable technology development support.</p>
                     <div class="cap-stats">
                         <span><strong>98%</strong> Client Retention</span>
                         <span><strong>15+</strong> Active Partnerships</span>
@@ -378,8 +403,8 @@
 
                 <div class="capability-card">
                     <div class="cap-icon"><i class="fas fa-code"></i></div>
-                    <h4>Technology Development Solutions</h4>
-                    <p>We are a technology company delivering practical digital solutions that connect ideas, people, and business outcomes.</p>
+                    <h4>Technology Partner Support</h4>
+                    <p>Through our Tech Dev partnership, clients can access practical digital solutions that connect creative work, business needs, and technology.</p>
                     <div class="cap-stats">
                         <span><strong>Digital</strong> Solutions</span>
                         <span><strong>Built</strong> to Scale</span>
