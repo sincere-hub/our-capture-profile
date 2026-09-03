@@ -1,0 +1,665 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Capture - Corporate Profile</title>
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    
+    <style>
+        @media print {
+            .menu-toggle, .nav-menu, .footer-socials, .contact-form, .floating-card, .pdf-download-btn {
+                display: none !important;
+            }
+            .hero-grid, .hero-bg, .vision-mission::before {
+                display: none !important;
+            }
+            .header {
+                position: static !important;
+                background: #0a0a1a !important;
+                padding: 20px 0 !important;
+            }
+            .hero {
+                min-height: auto !important;
+                padding: 60px 0 !important;
+            }
+            .hero .container {
+                padding: 40px 20px !important;
+            }
+            .hero-visual .camera-icon {
+                opacity: 0.1 !important;
+                animation: none !important;
+            }
+            section {
+                padding: 50px 0 !important;
+                page-break-inside: avoid;
+            }
+            .vision-mission {
+                background: #0a0a1a !important;
+                print-color-adjust: exact !important;
+                -webkit-print-color-adjust: exact !important;
+            }
+            .vm-card {
+                background: rgba(255,255,255,0.05) !important;
+                print-color-adjust: exact !important;
+                -webkit-print-color-adjust: exact !important;
+            }
+            .service-card {
+                break-inside: avoid;
+                page-break-inside: avoid;
+            }
+            .hero-stats .stat {
+                background: rgba(255,255,255,0.05) !important;
+                print-color-adjust: exact !important;
+                -webkit-print-color-adjust: exact !important;
+            }
+            * {
+                print-color-adjust: exact !important;
+                -webkit-print-color-adjust: exact !important;
+            }
+            img {
+                print-color-adjust: exact !important;
+                -webkit-print-color-adjust: exact !important;
+            }
+        }
+        
+        .pdf-download-btn {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            z-index: 9999;
+            background: #d4a853;
+            color: #0a0a1a;
+            padding: 15px 30px;
+            border-radius: 50px;
+            border: none;
+            font-weight: 700;
+            font-size: 14px;
+            cursor: pointer;
+            box-shadow: 0 10px 40px rgba(212, 168, 83, 0.4);
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-family: 'Inter', sans-serif;
+        }
+        .pdf-download-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 50px rgba(212, 168, 83, 0.5);
+        }
+        @media print {
+            .pdf-download-btn {
+                display: none !important;
+            }
+        }
+    </style>
+</head>
+<body>
+    
+    <button onclick="window.print()" class="pdf-download-btn">
+        <i class="fas fa-file-pdf"></i> Download PDF
+    </button>
+    
+    <!-- ===== HEADER ===== -->
+    <header class="header" id="header">
+        <div class="container">
+            <a href="#" class="logo">
+                <img src="images/logo.png" alt="Our Capture Logo" style="height: 40px; width: auto;">
+                <span class="logo-text">Our<span>Capture</span></span>
+            </a>
+            
+            <button class="menu-toggle" id="menuToggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="#about">About</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#vision">Vision</a></li>
+                <li><a href="#contact" class="nav-cta">Contact</a></li>
+            </ul>
+        </div>
+    </header>
+    
+    <!-- ===== HERO ===== -->
+    <section class="hero" id="home">
+        <div class="hero-bg" style="background: linear-gradient(135deg, rgba(10,10,26,0.85) 0%, rgba(26,26,46,0.85) 100%), url('images/hero-background.jpg') center/cover no-repeat;"></div>
+        <div class="hero-grid"></div>
+        
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-badge">Est. 2019 | B-BBEE Level 1</div>
+                <h1>
+                    Professional <br>
+                    <span class="highlight">Visual Solutions</span> <br>
+                    For Business & Events
+                </h1>
+                <p class="subtitle">
+                    Our Capture is a premier photography, videography, and events company 
+                    dedicated to delivering extraordinary visual storytelling solutions for 
+                    corporate clients, events, and strategic partners across South Africa.
+                </p>
+                
+                <div class="hero-stats">
+                    <div class="stat">
+                        <span class="stat-number" data-count="500">0</span>
+                        <span class="stat-label">Projects Completed</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number" data-count="98">0</span>
+                        <span class="stat-label">Client Satisfaction %</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number" data-count="5">0</span>
+                        <span class="stat-label">Years of Excellence</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number" data-count="50">0</span>
+                        <span class="stat-label">Corporate Partners</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="hero-visual">
+                <i class="fas fa-camera-retro camera-icon"></i>
+                <div class="floating-card">
+                    <i class="fas fa-briefcase"></i>
+                    <span>Corporate</span>
+                </div>
+                <div class="floating-card">
+                    <i class="fas fa-handshake"></i>
+                    <span>Partnerships</span>
+                </div>
+                <div class="floating-card">
+                    <i class="fas fa-award"></i>
+                    <span>Excellence</span>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- ===== ABOUT ===== -->
+    <section class="about" id="about">
+        <div class="container">
+            <div class="section-header">
+                <span class="tag">Company Overview</span>
+                <h2>About <span>Our Capture</span></h2>
+                <p>Your strategic partner in visual communications and event excellence</p>
+            </div>
+            
+            <div class="about-grid">
+                <div class="about-image">
+                    <div class="image-placeholder" style="background: none; padding: 0; overflow: hidden; border-radius: 20px;">
+                        <img src="images/team-photo.jpg" alt="Our Capture Team" style="width: 100%; height: 400px; object-fit: cover;">
+                        <div class="badge">B-BBEE Level 1</div>
+                    </div>
+                </div>
+                
+                <div class="about-content">
+                    <h3>Delivering <span>Extraordinary Results</span> Through Visual Excellence</h3>
+                    <p>
+                        <strong>Our Capture</strong> is a dynamic visual solutions company headquartered 
+                        in Thohoyandou, South Africa. Since our establishment in 2019, we have 
+                        positioned ourselves as a trusted partner for businesses, event organizers, 
+                        and individuals seeking professional photography, videography, and event 
+                        management services.
+                    </p>
+                    <p>
+                        We combine creative artistry with technical precision to deliver visual 
+                        content that drives engagement, builds brands, and creates lasting impressions. 
+                        Our commitment to excellence and innovation has earned us a reputation for 
+                        reliability and superior quality.
+                    </p>
+                    
+                    <div class="about-info-grid">
+                        <div class="about-info-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <div>
+                                <div class="label">Head Office</div>
+                                <div class="value">Thohoyandou, South Africa</div>
+                            </div>
+                        </div>
+                        <div class="about-info-item">
+                            <i class="fas fa-star"></i>
+                            <div>
+                                <div class="label">B-BBEE Status</div>
+                                <div class="value">Level 1 Contributor</div>
+                            </div>
+                        </div>
+                        <div class="about-info-item">
+                            <i class="fas fa-calendar-alt"></i>
+                            <div>
+                                <div class="label">Established</div>
+                                <div class="value">2019</div>
+                            </div>
+                        </div>
+                        <div class="about-info-item">
+                            <i class="fas fa-file-contract"></i>
+                            <div>
+                                <div class="label">Reg. Number</div>
+                                <div class="value">2019/377494/07</div>
+                            </div>
+                        </div>
+                        <div class="about-info-item">
+                            <i class="fas fa-file-invoice"></i>
+                            <div>
+                                <div class="label">Tax Reference</div>
+                                <div class="value">9986943166</div>
+                            </div>
+                        </div>
+                        <div class="about-info-item">
+                            <i class="fas fa-certificate"></i>
+                            <div>
+                                <div class="label">Compliance</div>
+                                <div class="value">Fully Compliant</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- ===== SERVICES WITH IMAGES ===== -->
+    <section class="services" id="services">
+        <div class="container">
+            <div class="section-header">
+                <span class="tag">Core Services</span>
+                <h2>Our <span>Professional Services</span></h2>
+                <p>Comprehensive visual solutions for business and events</p>
+            </div>
+            
+            <div class="services-grid">
+                <!-- Photography -->
+                <div class="service-card">
+                    <img src="images/photography.jpg" alt="Photography Services" style="width: 100%; height: 200px; object-fit: cover; border-radius: 12px; margin-bottom: 15px;">
+                    <div class="icon">
+                        <i class="fas fa-camera"></i>
+                    </div>
+                    <h4>Professional Photography</h4>
+                    <p>
+                        High-quality photography services including corporate portraits, product 
+                        photography, event documentation, and brand visual content creation.
+                    </p>
+                    <ul class="service-features">
+                        <li><i class="fas fa-check"></i> Corporate & Executive Portraits</li>
+                        <li><i class="fas fa-check"></i> Product & Commercial Photography</li>
+                        <li><i class="fas fa-check"></i> Event & Conference Coverage</li>
+                        <li><i class="fas fa-check"></i> Architectural & Real Estate</li>
+                    </ul>
+                </div>
+                
+                <!-- Events -->
+                <div class="service-card featured">
+                    <img src="images/events.jpg" alt="Event Services" style="width: 100%; height: 200px; object-fit: cover; border-radius: 12px; margin-bottom: 15px;">
+                    <div class="icon">
+                        <i class="fas fa-calendar-check"></i>
+                    </div>
+                    <h4>Event Management & Coverage</h4>
+                    <p>
+                        Full-service event planning, coordination, and comprehensive coverage 
+                        for corporate functions, conferences, weddings, and special occasions.
+                    </p>
+                    <ul class="service-features">
+                        <li><i class="fas fa-check"></i> Corporate Events & Conferences</li>
+                        <li><i class="fas fa-check"></i> Product Launches & Exhibitions</li>
+                        <li><i class="fas fa-check"></i> Team Building & Retreats</li>
+                        <li><i class="fas fa-check"></i> Private Celebrations</li>
+                    </ul>
+                </div>
+                
+                <!-- Videography -->
+                <div class="service-card">
+                    <img src="images/videography.jpg" alt="Videography Services" style="width: 100%; height: 200px; object-fit: cover; border-radius: 12px; margin-bottom: 15px;">
+                    <div class="icon">
+                        <i class="fas fa-video"></i>
+                    </div>
+                    <h4>Videography & Production</h4>
+                    <p>
+                        Professional video production services including corporate videos, 
+                        promotional content, event highlights, documentaries, and commercial 
+                        productions.
+                    </p>
+                    <ul class="service-features">
+                        <li><i class="fas fa-check"></i> Corporate & Brand Videos</li>
+                        <li><i class="fas fa-check"></i> Event Highlight Reels</li>
+                        <li><i class="fas fa-check"></i> Commercial Production</li>
+                        <li><i class="fas fa-check"></i> Documentary & Storytelling</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- ===== CAPABILITIES ===== -->
+    <section class="capabilities" id="capabilities">
+        <div class="container">
+            <div class="section-header">
+                <span class="tag">Strategic Capabilities</span>
+                <h2>Why Partner With <span>Our Capture</span></h2>
+                <p>Value proposition for investors, partners, and stakeholders</p>
+            </div>
+            
+            <div class="capabilities-grid">
+                <div class="capability-card">
+                    <div class="cap-icon"><i class="fas fa-chart-line"></i></div>
+                    <h4>Market Position</h4>
+                    <p>Positioned at the intersection of technology and creative services, serving a growing market.</p>
+                    <div class="cap-stats">
+                        <span><strong>500+</strong> Projects</span>
+                        <span><strong>50+</strong> Corporate Clients</span>
+                    </div>
+                </div>
+                
+                <div class="capability-card">
+                    <div class="cap-icon"><i class="fas fa-handshake"></i></div>
+                    <h4>Strategic Partnerships</h4>
+                    <p>Actively seeking partnerships to create mutually beneficial relationships and expand offerings.</p>
+                    <div class="cap-stats">
+                        <span><strong>98%</strong> Client Retention</span>
+                        <span><strong>15+</strong> Active Partnerships</span>
+                    </div>
+                </div>
+                
+                <div class="capability-card">
+                    <div class="cap-icon"><i class="fas fa-rocket"></i></div>
+                    <h4>Growth Potential</h4>
+                    <p>Positioned for significant growth with the 4th Industrial Revolution driving demand.</p>
+                    <div class="cap-stats">
+                        <span><strong>30%</strong> Annual Growth</span>
+                        <span><strong>5+</strong> New Markets</span>
+                    </div>
+                </div>
+                
+                <div class="capability-card">
+                    <div class="cap-icon"><i class="fas fa-award"></i></div>
+                    <h4>Competitive Advantage</h4>
+                    <p>Unique combination of creative excellence, technical expertise, and business acumen.</p>
+                    <div class="cap-stats">
+                        <span><strong>Level 1</strong> B-BBEE</span>
+                        <span><strong>5+</strong> Years Experience</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- ===== VISION & MISSION ===== -->
+    <section class="vision-mission" id="vision">
+        <div class="container">
+            <div class="section-header light">
+                <span class="tag">Our Purpose</span>
+                <h2>Vision, Mission &amp; <span>Values</span></h2>
+                <p>Guiding principles that drive our business forward</p>
+            </div>
+            
+            <div class="vm-grid">
+                <div class="vm-card">
+                    <div class="icon"><i class="fas fa-eye"></i></div>
+                    <h3>Our Vision</h3>
+                    <p>
+                        To be the first industry that incorporates various platforms with the 
+                        development of technology as the 4th Industrial Revolution by providing 
+                        professional services to archive extraordinary results for our customers.
+                    </p>
+                    <div class="vm-tag">Industry Leader</div>
+                </div>
+                
+                <div class="vm-card">
+                    <div class="icon"><i class="fas fa-bullseye"></i></div>
+                    <h3>Our Mission</h3>
+                    <ul>
+                        <li>Worldwide recognized company supporting diverse individuals</li>
+                        <li>Passionate about excellence and doing our work right</li>
+                        <li>Built on trust, respect, and collaboration</li>
+                        <li>We listen, learn, and seek out the best ideas</li>
+                    </ul>
+                    <div class="vm-tag">Excellence & Integrity</div>
+                </div>
+                
+                <div class="vm-card full-width">
+                    <div class="icon"><i class="fas fa-heart"></i></div>
+                    <h3>Our Core Values</h3>
+                    <div class="values-grid">
+                        <div class="value-item">
+                            <span class="value-icon"><i class="fas fa-star"></i></span>
+                            <h5>Excellence</h5>
+                            <p>Committed to delivering the highest quality in every project</p>
+                        </div>
+                        <div class="value-item">
+                            <span class="value-icon"><i class="fas fa-handshake"></i></span>
+                            <h5>Integrity</h5>
+                            <p>Building trust through transparency and ethical practices</p>
+                        </div>
+                        <div class="value-item">
+                            <span class="value-icon"><i class="fas fa-lightbulb"></i></span>
+                            <h5>Innovation</h5>
+                            <p>Embracing technology and creative solutions</p>
+                        </div>
+                        <div class="value-item">
+                            <span class="value-icon"><i class="fas fa-users"></i></span>
+                            <h5>Collaboration</h5>
+                            <p>Working together for mutual success and growth</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- ===== CONTACT ===== -->
+    <section class="contact" id="contact">
+        <div class="container">
+            <div class="section-header">
+                <span class="tag">Connect With Us</span>
+                <h2>Let's <span>Partner</span> Together</h2>
+                <p>Reach out for partnerships, funding opportunities, or service inquiries</p>
+            </div>
+            
+            <div class="contact-grid">
+                <div class="contact-info">
+                    <h3>Ready to Work Together?</h3>
+                    <p>
+                        We welcome discussions with potential partners, investors, and clients. 
+                        Our team is ready to explore how we can create value together.
+                    </p>
+                    
+                    <div class="contact-details">
+                        <div class="contact-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <div class="info">
+                                <span class="label">Physical Address</span>
+                                <span class="value">93 Mphephu Main Road, Sabina Plaza, Office G4, Thohoyandou, 0950</span>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-phone"></i>
+                            <div class="info">
+                                <span class="label">Contact Numbers</span>
+                                <span class="value">
+                                    <a href="tel:+27823655302">082 365 5302</a> / 
+                                    <a href="tel:+27814183840">081 418 3840</a>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-fax"></i>
+                            <div class="info">
+                                <span class="label">Fax</span>
+                                <span class="value">0864 114 790</span>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-envelope"></i>
+                            <div class="info">
+                                <span class="label">Email</span>
+                                <span class="value">
+                                    <a href="mailto:INFO@OURCAPTURE.CO.ZA">INFO@OURCAPTURE.CO.ZA</a>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-globe"></i>
+                            <div class="info">
+                                <span class="label">Website</span>
+                                <span class="value">
+                                    <a href="https://www.ourcapture.co.za" target="_blank">WWW.OURCAPTURE.CO.ZA</a>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="contact-item highlight">
+                            <i class="fas fa-file-contract"></i>
+                            <div class="info">
+                                <span class="label">Company Registration</span>
+                                <span class="value">2019/377494/07</span>
+                            </div>
+                        </div>
+                        <div class="contact-item highlight">
+                            <i class="fas fa-file-invoice"></i>
+                            <div class="info">
+                                <span class="label">Tax Reference</span>
+                                <span class="value">9986943166</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="contact-form">
+                    <h3>Send an Inquiry</h3>
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <label for="name">Full Name <span class="required">*</span></label>
+                            <input type="text" id="name" placeholder="Enter your full name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email Address <span class="required">*</span></label>
+                            <input type="email" id="email" placeholder="Enter your email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Phone Number</label>
+                            <input type="tel" id="phone" placeholder="Enter your phone number">
+                        </div>
+                        <div class="form-group">
+                            <label for="interest">I'm Interested In <span class="required">*</span></label>
+                            <select id="interest" required>
+                                <option value="">Select an option</option>
+                                <option value="partnership">Strategic Partnership</option>
+                                <option value="funding">Funding / Investment</option>
+                                <option value="photography">Photography Services</option>
+                                <option value="events">Event Services</option>
+                                <option value="videography">Videography Services</option>
+                                <option value="other">Other Inquiry</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Message <span class="required">*</span></label>
+                            <textarea id="message" placeholder="Tell us about your inquiry or project..." required></textarea>
+                        </div>
+                        <button type="submit" class="btn-submit">
+                            <i class="fas fa-paper-plane"></i> Submit Inquiry
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- ===== FOOTER ===== -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div>
+                    <a href="#" class="logo">
+                        <img src="images/logo.png" alt="Our Capture" style="height: 35px; width: auto; margin-right: 10px;">
+                        <span class="logo-text">Our<span>Capture</span></span>
+                    </a>
+                    <p style="color: rgba(255,255,255,0.4); font-size: 13px; margin-top: 10px;">
+                        Professional Visual Solutions
+                    </p>
+                </div>
+                
+                <div class="footer-info">
+                    <p>B-BBEE Level 1</p>
+                    <p>Reg: 2019/377494/07</p>
+                    <p>Tax: 9986943166</p>
+                </div>
+                
+                <div class="footer-socials">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2026 Our Capture. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+    
+    <script>
+        const menuToggle = document.getElementById('menuToggle');
+        const navMenu = document.getElementById('navMenu');
+        menuToggle.addEventListener('click', function() {
+            this.classList.toggle('active');
+            navMenu.classList.toggle('active');
+        });
+        document.querySelectorAll('.nav-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                menuToggle.classList.remove('active');
+                navMenu.classList.remove('active');
+            });
+        });
+        
+        const header = document.getElementById('header');
+        window.addEventListener('scroll', function() {
+            if (window.scrollY > 100) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+        
+        const stats = document.querySelectorAll('.stat-number');
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const target = parseInt(entry.target.getAttribute('data-count'));
+                    let current = 0;
+                    const timer = setInterval(() => {
+                        current += target / 60;
+                        if (current >= target) {
+                            entry.target.textContent = target + (target > 100 ? '%' : '+');
+                            clearInterval(timer);
+                        } else {
+                            entry.target.textContent = Math.floor(current);
+                        }
+                    }, 33);
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.3 });
+        stats.forEach(stat => observer.observe(stat));
+        
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) target.scrollIntoView({ behavior: 'smooth' });
+            });
+        });
+        
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Thank you for your inquiry! Our team will respond within 24 hours.');
+            this.reset();
+        });
+    </script>
+</body>
+</html>
