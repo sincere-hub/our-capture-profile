@@ -20,13 +20,80 @@
 </head>
 <body>
 
-    <!-- running header / footer, printed on every PDF page -->
-    <div class="doc-runner top print-only" aria-hidden="true">
-        <span>Our Capture — Company Profile</span>
-        <span>Reg. 2019/377494/07</span>
+    <!-- =====================================================================
+         PRINT-ONLY DOCUMENT SHELL
+         (hidden on screen; renders the profile as a paginated PDF document)
+         ===================================================================== -->
+    <div class="doc-runner top" aria-hidden="true">
+        <img class="run-logo" src="logo.png" alt="">
+        <span>Company Profile</span>
     </div>
-    <div class="doc-runner bottom print-only" aria-hidden="true">
-        <span>Thohoyandou, South Africa&nbsp;&nbsp;·&nbsp;&nbsp;info@ourcapture.co.za&nbsp;&nbsp;·&nbsp;&nbsp;www.ourcapture.co.za&nbsp;&nbsp;·&nbsp;&nbsp;B-BBEE Level 1</span>
+    <div class="doc-runner bottom" aria-hidden="true">
+        <span>www.ourcapture.co.za</span>
+        <span>info@ourcapture.co.za</span>
+    </div>
+
+    <div class="doc-cover" aria-hidden="true">
+        <div class="dc-top">
+            <img src="logo.png" alt="Our Capture">
+        </div>
+        <div class="dc-mid">
+            <p class="dc-eyebrow">Company Profile &nbsp;·&nbsp; 2026</p>
+            <h1>Company<br>Profile</h1>
+            <p class="dc-tag">
+                Visual storytelling that makes organisations look their best —
+                photography, videography, event coverage and corporate content,
+                delivered reliably, on brief and on schedule.
+            </p>
+        </div>
+        <div class="dc-foot">
+            <div class="dc-particulars">
+                <div><span>Established</span>2019</div>
+                <div><span>Registration</span>2019/377494/07</div>
+                <div><span>Tax Reference</span>9986943166</div>
+                <div><span>B-BBEE</span>Level 1 Contributor</div>
+            </div>
+            <p class="dc-note">
+                Head Office &nbsp;·&nbsp; 93 Mphephu Main Road, Sabina Plaza, Office G4, Thohoyandou, 0950, South Africa
+                &nbsp;·&nbsp; info@ourcapture.co.za &nbsp;·&nbsp; www.ourcapture.co.za
+            </p>
+            <p class="dc-confidential">
+                Prepared for the recipient's evaluation. Please treat the contents of this document as confidential.
+            </p>
+        </div>
+    </div>
+
+    <div class="doc-toc" aria-hidden="true">
+        <h2>Contents</h2>
+        <ol class="toc-list">
+            <li><span class="tn">01</span><span class="tt">Company Overview</span></li>
+            <li><span class="tn">02</span><span class="tt">Services</span></li>
+            <li><span class="tn">03</span><span class="tt">How We Work</span></li>
+            <li><span class="tn">04</span><span class="tt">Industries We Serve</span></li>
+            <li><span class="tn">05</span><span class="tt">Why Our Capture</span></li>
+            <li><span class="tn">06</span><span class="tt">Compliance &amp; Credentials</span></li>
+            <li><span class="tn">07</span><span class="tt">Vision, Mission &amp; Values</span></li>
+            <li><span class="tn">08</span><span class="tt">Contact</span></li>
+        </ol>
+        <div class="toc-particulars">
+            <h3>Company particulars</h3>
+            <table>
+                <tbody>
+                    <tr><th>Registered name</th><td>Our Capture</td></tr>
+                    <tr><th>Company registration</th><td>2019/377494/07</td></tr>
+                    <tr><th>Tax reference number</th><td>9986943166</td></tr>
+                    <tr><th>B-BBEE status</th><td>Level 1 Contributor</td></tr>
+                    <tr><th>Established</th><td>2019</td></tr>
+                    <tr><th>Head office</th><td>Thohoyandou, Limpopo, South Africa</td></tr>
+                </tbody>
+            </table>
+        </div>
+        <p class="toc-about">
+            <strong>About this document.</strong> This profile introduces Our Capture to prospective clients and
+            partners. It sets out our services, working process, sector experience and compliance status.
+            Certificates, affidavits, insurance confirmations, references and a tailored proposal are available
+            on request using the contact details on the final page.
+        </p>
     </div>
 
     <button onclick="window.print()" class="pdf-fab" type="button" aria-label="Download this profile as a PDF using your browser's print dialog">
