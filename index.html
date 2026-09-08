@@ -3,706 +3,727 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Our Capture | Corporate Profile</title>
-    
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css">
-    
-    <style>
-        @media print {
-            .menu-toggle, .nav-menu, .footer-socials, .contact-form, .floating-card, .hero-actions, .pdf-download-btn {
-                display: none !important;
-            }
-            .hero-grid, .vision-mission::before {
-                display: none !important;
-            }
-            .hero-bg {
-                display: block !important;
-                print-color-adjust: exact !important;
-                -webkit-print-color-adjust: exact !important;
-            }
-            .header {
-                position: static !important;
-                background: #0a0a1a !important;
-                padding: 20px 0 !important;
-            }
-            .hero {
-                min-height: 0 !important;
-                padding: 0 !important;
-                page-break-after: always;
-            }
-            .hero .container {
-                min-height: 0 !important;
-                padding: 25px 20px !important;
-            }
-            .hero-visual .camera-icon {
-                opacity: 0.1 !important;
-                animation: none !important;
-            }
-            section {
-                padding: 50px 0 !important;
-                page-break-inside: auto;
-                page-break-after: always;
-            }
-            .vision-mission {
-                background: #0a0a1a !important;
-                print-color-adjust: exact !important;
-                -webkit-print-color-adjust: exact !important;
-            }
-            .vm-card {
-                background: rgba(255,255,255,0.05) !important;
-                print-color-adjust: exact !important;
-                -webkit-print-color-adjust: exact !important;
-            }
-            .service-card {
-                break-inside: avoid;
-                page-break-inside: avoid;
-            }
-            .hero-stats .stat {
-                background: rgba(255,255,255,0.05) !important;
-                print-color-adjust: exact !important;
-                -webkit-print-color-adjust: exact !important;
-            }
-            * {
-                print-color-adjust: exact !important;
-                -webkit-print-color-adjust: exact !important;
-            }
-            img {
-                print-color-adjust: exact !important;
-                -webkit-print-color-adjust: exact !important;
-            }
-        }
-        
-        .pdf-download-btn {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            z-index: 9999;
-            background: #d4a853;
-            color: #0a0a1a;
-            padding: 15px 30px;
-            border-radius: 50px;
-            border: none;
-            font-weight: 700;
-            font-size: 14px;
-            cursor: pointer;
-            box-shadow: 0 10px 40px rgba(212, 168, 83, 0.4);
-            transition: all 0.3s ease;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            font-family: 'Inter', sans-serif;
-        }
-        .pdf-download-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 15px 50px rgba(212, 168, 83, 0.5);
-        }
-        @media print {
-            @page {
-                size: A4;
-                margin: 14mm;
-            }
+    <title>Our Capture | Company Profile</title>
+    <meta name="description" content="Our Capture is a South African visual solutions company delivering photography, videography, event coverage and corporate content for organisations. B-BBEE Level 1. Established 2019.">
+    <meta name="author" content="Our Capture">
 
-            .pdf-download-btn {
-                display: none !important;
-            }
-        }
-    </style>
+    <meta property="og:title" content="Our Capture | Company Profile">
+    <meta property="og:description" content="Visual storytelling that makes organisations look their best — photography, videography, events and corporate content. B-BBEE Level 1.">
+    <meta property="og:type" content="website">
+
+    <link rel="icon" type="image/png" href="logo.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500;1,600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    
-    <button onclick="window.print()" class="pdf-download-btn" type="button" aria-label="Open the print dialog to save the company profile as a PDF">
-        <i class="fas fa-file-pdf" aria-hidden="true"></i> Save as PDF
+
+    <!-- running header / footer, printed on every PDF page -->
+    <div class="doc-runner top print-only" aria-hidden="true">
+        <span>Our Capture — Company Profile</span>
+        <span>Reg. 2019/377494/07</span>
+    </div>
+    <div class="doc-runner bottom print-only" aria-hidden="true">
+        <span>Thohoyandou, South Africa&nbsp;&nbsp;·&nbsp;&nbsp;info@ourcapture.co.za&nbsp;&nbsp;·&nbsp;&nbsp;www.ourcapture.co.za&nbsp;&nbsp;·&nbsp;&nbsp;B-BBEE Level 1</span>
+    </div>
+
+    <button onclick="window.print()" class="pdf-fab" type="button" aria-label="Download this profile as a PDF using your browser's print dialog">
+        <i class="fas fa-arrow-down" aria-hidden="true"></i> <span>Download Profile (PDF)</span>
     </button>
-    
+
     <!-- ===== HEADER ===== -->
     <header class="header" id="header">
         <div class="container">
-            <a href="#" class="logo">
-                <img src="logo.jpg" alt="Our Capture Logo" style="height: 40px; width: auto;">
+            <a href="#home" class="logo">
+                <img src="logo.png" alt="Our Capture">
                 <span class="logo-text">Our<span>Capture</span></span>
             </a>
-            
-            <button class="menu-toggle" id="menuToggle">
-                <span></span>
-                <span></span>
-                <span></span>
+
+            <button class="menu-toggle" id="menuToggle" aria-label="Toggle navigation" aria-expanded="false">
+                <span></span><span></span><span></span>
             </button>
-            
+
             <ul class="nav-menu" id="navMenu">
-                <li><a href="#about">About</a></li>
+                <li><a href="#about">Overview</a></li>
                 <li><a href="#services">Services</a></li>
-                <li><a href="#capabilities">Partnerships</a></li>
-                <li><a href="#vision">Vision</a></li>
+                <li><a href="#work">How We Work</a></li>
+                <li><a href="#industries">Industries</a></li>
+                <li><a href="#compliance">Compliance</a></li>
                 <li><a href="#contact" class="nav-cta">Contact</a></li>
             </ul>
         </div>
     </header>
-    
-    <!-- ===== HERO ===== -->
+
+    <!-- ===== HERO / COVER ===== -->
     <section class="hero" id="home">
-        <div class="hero-bg" style="background: linear-gradient(135deg, rgba(10,10,26,0.85) 0%, rgba(26,26,46,0.85) 100%), url('hero-background.jpg') center/cover no-repeat;"></div>
-        <div class="hero-grid"></div>
-        
+        <div class="hero-bg" style="background-image: url('hero-background.jpg');"></div>
         <div class="container">
             <div class="hero-content">
-                <div class="profile-kicker"><span>OUR CAPTURE</span> COMPANY PROFILE</div>
-                <div class="hero-badge">Est. 2019 | B-BBEE Level 1</div>
-                <h1>
-                    Stories that move <br>
-                    <span class="highlight">business forward.</span>
-                </h1>
+                <div class="hero-kicker"><b>Our Capture</b> &nbsp;·&nbsp; Company Profile</div>
+                <h1>Visual storytelling that makes<br>organisations <em>look their best.</em></h1>
                 <p class="subtitle">
-                    Our Capture creates powerful visual experiences through photography,
-                    videography, events, and corporate content. We help organisations look
-                    confident, connect with people, and make every moment count.
+                    We are a South African visual solutions company producing photography,
+                    videography, event coverage and corporate content for businesses,
+                    institutions and public-sector organisations — delivered reliably,
+                    on brief and on schedule.
                 </p>
 
-                <div class="service-pillars" aria-label="Our core services">
-                    <span><i class="fas fa-camera" aria-hidden="true"></i> Photography</span>
-                    <span><i class="fas fa-video" aria-hidden="true"></i> Videography</span>
-                    <span><i class="fas fa-calendar-check" aria-hidden="true"></i> Events</span>
-                    <span><i class="fas fa-building" aria-hidden="true"></i> Corporate</span>
+                <div class="pillars" aria-label="Core services">
+                    <span><i class="fas fa-camera"></i> Photography</span>
+                    <span><i class="fas fa-video"></i> Videography</span>
+                    <span><i class="fas fa-calendar-check"></i> Events</span>
+                    <span><i class="fas fa-building"></i> Corporate Content</span>
                 </div>
 
                 <div class="hero-actions">
-                    <a href="#contact" class="btn-primary"><i class="fas fa-arrow-right"></i> Start a Conversation</a>
-                    <a href="#services" class="btn-secondary">Explore Our Services</a>
+                    <a href="#contact" class="btn btn-gold"><i class="fas fa-arrow-right"></i> Start a conversation</a>
+                    <button type="button" class="btn btn-ghost" onclick="window.print()"><i class="fas fa-arrow-down"></i> Download this profile</button>
                 </div>
-                
-                <div class="hero-stats">
-                    <div class="stat">
-                        <span class="stat-number" data-count="500">0</span>
-                        <span class="stat-label">Projects Completed</span>
-                    </div>
-                    <div class="stat">
-                        <span class="stat-number" data-count="98">0</span>
-                        <span class="stat-label">Client Satisfaction %</span>
-                    </div>
-                    <div class="stat">
-                        <span class="stat-number" data-count="5">0</span>
-                        <span class="stat-label">Years of Excellence</span>
-                    </div>
-                    <div class="stat">
-                        <span class="stat-number" data-count="50">0</span>
-                        <span class="stat-label">Corporate Partners</span>
-                    </div>
+
+                <div class="cred-row">
+                    <span class="cred"><i class="fas fa-check"></i> Established 2019</span>
+                    <span class="cred"><i class="fas fa-check"></i> B-BBEE Level 1 Contributor</span>
+                    <span class="cred"><i class="fas fa-check"></i> POPIA-aligned workflow</span>
+                    <span class="cred"><i class="fas fa-check"></i> Reg. 2019/377494/07</span>
                 </div>
             </div>
-            
-            <div class="hero-visual">
-                <i class="fas fa-camera-retro camera-icon"></i>
-                <div class="floating-card">
-                    <i class="fas fa-briefcase"></i>
-                    <span>Corporate</span>
-                </div>
-                <div class="floating-card">
-                    <i class="fas fa-handshake"></i>
-                    <span>Partnerships</span>
-                </div>
-                <div class="floating-card">
-                    <i class="fas fa-award"></i>
-                    <span>Excellence</span>
-                </div>
-            </div>
+
+            <figure class="hero-figure">
+                <img src="team-photo.jpg" alt="The Our Capture team on location">
+                <figcaption>
+                    <b>On location</b>
+                    The Our Capture team — Thohoyandou, Limpopo
+                </figcaption>
+            </figure>
         </div>
     </section>
-    
-    <!-- ===== ABOUT ===== -->
+
+    <!-- ===== OVERVIEW ===== -->
     <section class="about" id="about">
         <div class="container">
-            <div class="section-header">
-                <span class="tag">Company Overview</span>
-                <h2>About <span>Our Capture</span></h2>
-                <p>Your strategic partner in visual communications and event excellence</p>
+            <div class="section-head">
+                <span class="eyebrow">Company Overview</span>
+                <h2>A dependable visual partner for serious organisations</h2>
+                <p>Creative craft, professional process and full accountability from brief to final delivery.</p>
             </div>
-            
+
             <div class="about-grid">
-                <div class="about-image">
-                    <div class="image-placeholder" style="background: none; padding: 0; overflow: hidden; border-radius: 20px;">
-                        <img src="team-photo.jpg" alt="Our Capture Team" style="width: 100%; height: 400px; object-fit: cover;">
-                        <div class="badge">B-BBEE Level 1</div>
-                    </div>
-                </div>
-                
-                <div class="about-content">
-                    <h3>Delivering <span>Extraordinary Results</span> Through Visual Excellence</h3>
+                <figure class="about-figure reveal">
+                    <img src="photography.jpg" alt="Our Capture on a corporate shoot">
+                    <span class="badge">B-BBEE Level 1</span>
+                </figure>
+
+                <div class="about-body reveal">
+                    <h3>Who we are</h3>
                     <p>
-                        <strong>Our Capture</strong> is a dynamic visual solutions company headquartered 
-                        in Thohoyandou, South Africa. Since our establishment in 2019, we have 
-                        positioned ourselves as a trusted partner for businesses, event organizers, 
-                        and individuals seeking professional photography, videography, and event 
-                        management services.
+                        <strong>Our Capture</strong> is a visual solutions company headquartered in
+                        Thohoyandou, Limpopo. Since 2019 we have supported businesses, event organisers,
+                        institutions and public-sector clients with professional photography, videography
+                        and event coverage.
                     </p>
                     <p>
-                        We combine creative artistry with technical precision to deliver visual 
-                        content that drives engagement, builds brands, and creates lasting impressions. 
-                        Our commitment to excellence and innovation has earned us a reputation for 
-                        reliability and superior quality.
+                        We pair creative craft with a disciplined production process — clear scoping,
+                        planned logistics, briefed crews, secure file handling and predictable delivery —
+                        so the organisations we work with always know what to expect.
                     </p>
                     <p>
-                        Our partnership with Tech Dev Solutions strengthens the way we support modern
-                        businesses, combining Our Capture's visual expertise with trusted technology
-                        development solutions when a project calls for both.
+                        Where a project also calls for digital or technology work, we deliver it together
+                        with our partner <strong>Tech Dev Solutions</strong>, giving clients a single point
+                        of contact across both creative and technical scope.
                     </p>
-                    
-                    <div class="about-info-grid">
-                        <div class="about-info-item">
-                            <i class="fas fa-map-marker-alt"></i>
-                            <div>
-                                <div class="label">Head Office</div>
-                                <div class="value">Thohoyandou, South Africa</div>
-                            </div>
+
+                    <div class="facts">
+                        <div class="fact">
+                            <i class="fas fa-location-dot"></i>
+                            <div><div class="k">Head Office</div><div class="v">Thohoyandou, South Africa</div></div>
                         </div>
-                        <div class="about-info-item">
-                            <i class="fas fa-star"></i>
-                            <div>
-                                <div class="label">B-BBEE Status</div>
-                                <div class="value">Level 1 Contributor</div>
-                            </div>
+                        <div class="fact">
+                            <i class="fas fa-calendar-day"></i>
+                            <div><div class="k">Established</div><div class="v">2019</div></div>
                         </div>
-                        <div class="about-info-item">
-                            <i class="fas fa-calendar-alt"></i>
-                            <div>
-                                <div class="label">Established</div>
-                                <div class="value">2019</div>
-                            </div>
-                        </div>
-                        <div class="about-info-item">
+                        <div class="fact">
                             <i class="fas fa-file-contract"></i>
-                            <div>
-                                <div class="label">Reg. Number</div>
-                                <div class="value">2019/377494/07</div>
-                            </div>
+                            <div><div class="k">Company Reg.</div><div class="v">2019/377494/07</div></div>
                         </div>
-                        <div class="about-info-item">
+                        <div class="fact">
                             <i class="fas fa-file-invoice"></i>
-                            <div>
-                                <div class="label">Tax Reference</div>
-                                <div class="value">9986943166</div>
-                            </div>
+                            <div><div class="k">Tax Reference</div><div class="v">9986943166</div></div>
                         </div>
-                        <div class="about-info-item">
-                            <i class="fas fa-certificate"></i>
-                            <div>
-                                <div class="label">Compliance</div>
-                                <div class="value">Fully Compliant</div>
-                            </div>
+                        <div class="fact">
+                            <i class="fas fa-award"></i>
+                            <div><div class="k">B-BBEE Status</div><div class="v">Level 1 Contributor</div></div>
+                        </div>
+                        <div class="fact">
+                            <i class="fas fa-shield-halved"></i>
+                            <div><div class="k">Data Handling</div><div class="v">POPIA-aligned</div></div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
-    
-    <!-- ===== SERVICES WITH IMAGES ===== -->
-    <section class="services" id="services">
+
+    <!-- ===== SERVICES ===== -->
+    <section class="services alt" id="services">
         <div class="container">
-            <div class="section-header">
-                <span class="tag">Core Services</span>
-                <h2>Our <span>Professional Services</span></h2>
-                <p>Comprehensive visual solutions for business and events</p>
+            <div class="section-head">
+                <span class="eyebrow">What We Do</span>
+                <h2>Services</h2>
+                <p>Four connected capabilities, delivered to a consistent professional standard.</p>
             </div>
-            
-            <div class="services-grid">
-                <!-- Photography -->
-                <div class="service-card">
-                    <img src="photography.jpg" alt="Photography Services" style="width: 100%; height: 200px; object-fit: cover; border-radius: 12px; margin-bottom: 15px;">
-                    <div class="icon">
-                        <i class="fas fa-camera"></i>
+
+            <div class="svc-grid">
+                <article class="svc-card reveal">
+                    <div class="thumb"><img src="photography.jpg" alt="Photography"></div>
+                    <div class="body">
+                        <div class="svc-icon"><i class="fas fa-camera"></i></div>
+                        <h4>Photography</h4>
+                        <p>Considered, brand-consistent stills for corporate communication, marketing and record-keeping.</p>
+                        <ul class="svc-list">
+                            <li><i class="fas fa-circle"></i> Executive &amp; team portraits</li>
+                            <li><i class="fas fa-circle"></i> Product &amp; commercial</li>
+                            <li><i class="fas fa-circle"></i> Conference &amp; event coverage</li>
+                            <li><i class="fas fa-circle"></i> Facilities &amp; site documentation</li>
+                        </ul>
                     </div>
-                    <h4>Professional Photography</h4>
+                </article>
+
+                <article class="svc-card reveal">
+                    <div class="thumb"><img src="videography.jpg" alt="Videography"></div>
+                    <div class="body">
+                        <div class="svc-icon"><i class="fas fa-video"></i></div>
+                        <h4>Videography &amp; Production</h4>
+                        <p>Story-led video, from planning and filming through to edit, grade and delivery in the formats you need.</p>
+                        <ul class="svc-list">
+                            <li><i class="fas fa-circle"></i> Corporate &amp; brand films</li>
+                            <li><i class="fas fa-circle"></i> Event highlight reels</li>
+                            <li><i class="fas fa-circle"></i> Interviews &amp; testimonials</li>
+                            <li><i class="fas fa-circle"></i> Social &amp; campaign cut-downs</li>
+                        </ul>
+                    </div>
+                </article>
+
+                <article class="svc-card reveal">
+                    <div class="thumb"><img src="events.jpg" alt="Events"></div>
+                    <div class="body">
+                        <div class="svc-icon"><i class="fas fa-calendar-check"></i></div>
+                        <h4>Event Coverage</h4>
+                        <p>Coordinated multi-operator coverage for functions where nothing can be missed.</p>
+                        <ul class="svc-list">
+                            <li><i class="fas fa-circle"></i> Conferences &amp; summits</li>
+                            <li><i class="fas fa-circle"></i> Product launches &amp; exhibitions</li>
+                            <li><i class="fas fa-circle"></i> Awards &amp; gala functions</li>
+                            <li><i class="fas fa-circle"></i> Same-day selects on request</li>
+                        </ul>
+                    </div>
+                </article>
+            </div>
+
+            <div class="svc-strip reveal">
+                <div>
+                    <h4>Corporate content &amp; digital</h4>
                     <p>
-                        High-quality photography services including corporate portraits, product 
-                        photography, event documentation, and brand visual content creation.
+                        Ongoing visual content for reports, websites, recruitment and internal
+                        communication — and, through our partnership with <strong>Tech Dev Solutions</strong>,
+                        the websites, portals and digital tools that put it to work.
                     </p>
-                    <ul class="service-features">
-                        <li><i class="fas fa-check"></i> Corporate & Executive Portraits</li>
-                        <li><i class="fas fa-check"></i> Product & Commercial Photography</li>
-                        <li><i class="fas fa-check"></i> Event & Conference Coverage</li>
-                        <li><i class="fas fa-check"></i> Architectural & Real Estate</li>
-                    </ul>
                 </div>
-                
-                <!-- Events -->
-                <div class="service-card featured">
-                    <img src="events.jpg" alt="Event Services" style="width: 100%; height: 200px; object-fit: cover; border-radius: 12px; margin-bottom: 15px;">
-                    <div class="icon">
-                        <i class="fas fa-calendar-check"></i>
-                    </div>
-                    <h4>Event Management & Coverage</h4>
-                    <p>
-                        Full-service event planning, coordination, and comprehensive coverage 
-                        for corporate functions, conferences, weddings, and special occasions.
-                    </p>
-                    <ul class="service-features">
-                        <li><i class="fas fa-check"></i> Corporate Events & Conferences</li>
-                        <li><i class="fas fa-check"></i> Product Launches & Exhibitions</li>
-                        <li><i class="fas fa-check"></i> Team Building & Retreats</li>
-                        <li><i class="fas fa-check"></i> Private Celebrations</li>
-                    </ul>
-                </div>
-                
-                <!-- Videography -->
-                <div class="service-card">
-                    <img src="videography.jpg" alt="Videography Services" style="width: 100%; height: 200px; object-fit: cover; border-radius: 12px; margin-bottom: 15px;">
-                    <div class="icon">
-                        <i class="fas fa-video"></i>
-                    </div>
-                    <h4>Videography & Production</h4>
-                    <p>
-                        Professional video production services including corporate videos, 
-                        promotional content, event highlights, documentaries, and commercial 
-                        productions.
-                    </p>
-                    <ul class="service-features">
-                        <li><i class="fas fa-check"></i> Corporate & Brand Videos</li>
-                        <li><i class="fas fa-check"></i> Event Highlight Reels</li>
-                        <li><i class="fas fa-check"></i> Commercial Production</li>
-                        <li><i class="fas fa-check"></i> Documentary & Storytelling</li>
-                    </ul>
+                <div class="strip-tags">
+                    <span>Annual report imagery</span>
+                    <span>Website &amp; social content</span>
+                    <span>Recruitment &amp; culture</span>
+                    <span>Web &amp; app development</span>
+                    <span>Content libraries</span>
                 </div>
             </div>
         </div>
     </section>
-    
-    <!-- ===== CAPABILITIES ===== -->
-    <section class="capabilities" id="capabilities">
+
+    <!-- ===== HOW WE WORK ===== -->
+    <section class="work" id="work">
         <div class="container">
-            <div class="section-header">
-                <span class="tag">Strategic Capabilities</span>
-                <h2>Why Partner With <span>Our Capture</span></h2>
-                <p>Creative excellence from Our Capture, strengthened by trusted corporate partnerships</p>
+            <div class="section-head">
+                <span class="eyebrow">Engagement Model</span>
+                <h2>How we work with you</h2>
+                <p>A predictable process with clear ownership at every stage.</p>
             </div>
-            
-            <div class="capabilities-grid">
-                <div class="capability-card">
-                    <div class="cap-icon"><i class="fas fa-chart-line"></i></div>
-                    <h4>Market Position</h4>
-                    <p>Positioned at the intersection of technology and creative services, serving a growing market.</p>
-                    <div class="cap-stats">
-                        <span><strong>500+</strong> Projects</span>
-                        <span><strong>50+</strong> Corporate Clients</span>
+
+            <div class="work-layout">
+                <div class="steps reveal">
+                    <div class="step">
+                        <div>
+                            <h4>Discovery &amp; brief</h4>
+                            <p>We meet to understand the objective, audience, deliverables, dates and any brand or access requirements.</p>
+                        </div>
                     </div>
-                </div>
-                
-                <div class="capability-card partnership-card">
-                    <div class="cap-icon"><i class="fas fa-handshake"></i></div>
-                    <h4>Strategic Partnerships</h4>
-                    <a class="partner-link" href="https://www.techdevsolutions.co.za/" target="_blank" rel="noopener noreferrer">
-                        <img class="partner-logo" src="images/tech-dev-logo.png" alt="Tech Dev Solutions">
-                        <span>Visit Tech Dev Solutions <i class="fas fa-external-link-alt" aria-hidden="true"></i></span>
-                    </a>
-                    <p>Our Capture leads with photography, videography, events, and corporate services. We partner with Tech Dev Solutions when clients also need dependable technology development support.</p>
-                    <div class="cap-stats">
-                        <span><strong>98%</strong> Client Retention</span>
-                        <span><strong>15+</strong> Active Partnerships</span>
+                    <div class="step">
+                        <div>
+                            <h4>Proposal &amp; scope</h4>
+                            <p>A written proposal covering scope, crew, deliverables, timelines and a fixed quotation — no surprises.</p>
+                        </div>
+                    </div>
+                    <div class="step">
+                        <div>
+                            <h4>Planning &amp; logistics</h4>
+                            <p>Shot lists, run sheets, site visits, permissions and equipment prep agreed before the shoot day.</p>
+                        </div>
+                    </div>
+                    <div class="step">
+                        <div>
+                            <h4>Production</h4>
+                            <p>Professional-grade crew and equipment on site, working to the agreed plan with on-shoot data backup.</p>
+                        </div>
+                    </div>
+                    <div class="step">
+                        <div>
+                            <h4>Edit, review &amp; delivery</h4>
+                            <p>Edited selects for your review, one round of refinements, then final files via secure transfer in web and print-ready formats.</p>
+                        </div>
                     </div>
                 </div>
 
-                <div class="capability-card">
-                    <div class="cap-icon"><i class="fas fa-code"></i></div>
-                    <h4>Technology Partner Support</h4>
-                    <p>Through our Tech Dev partnership, clients can access practical digital solutions that connect creative work, business needs, and technology.</p>
-                    <div class="cap-stats">
-                        <span><strong>Digital</strong> Solutions</span>
-                        <span><strong>Built</strong> to Scale</span>
-                    </div>
-                </div>
-                
-                <div class="capability-card">
-                    <div class="cap-icon"><i class="fas fa-rocket"></i></div>
-                    <h4>Growth Potential</h4>
-                    <p>Positioned for significant growth with the 4th Industrial Revolution driving demand.</p>
-                    <div class="cap-stats">
-                        <span><strong>30%</strong> Annual Growth</span>
-                        <span><strong>5+</strong> New Markets</span>
-                    </div>
-                </div>
-                
-                <div class="capability-card">
-                    <div class="cap-icon"><i class="fas fa-award"></i></div>
-                    <h4>Competitive Advantage</h4>
-                    <p>Unique combination of creative excellence, technical expertise, and business acumen.</p>
-                    <div class="cap-stats">
-                        <span><strong>Level 1</strong> B-BBEE</span>
-                        <span><strong>5+</strong> Years Experience</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    
-    <!-- ===== VISION & MISSION ===== -->
-    <section class="vision-mission" id="vision">
-        <div class="container">
-            <div class="section-header light">
-                <span class="tag">Our Purpose</span>
-                <h2>Vision, Mission &amp; <span>Values</span></h2>
-                <p>Guiding principles that drive our business forward</p>
-            </div>
-            
-            <div class="vm-grid">
-                <div class="vm-card">
-                    <div class="icon"><i class="fas fa-eye"></i></div>
-                    <h3>Our Vision</h3>
-                    <p>
-                        To be the first industry that incorporates various platforms with the 
-                        development of technology as the 4th Industrial Revolution by providing 
-                        professional services to archive extraordinary results for our customers.
-                    </p>
-                    <div class="vm-tag">Industry Leader</div>
-                </div>
-                
-                <div class="vm-card">
-                    <div class="icon"><i class="fas fa-bullseye"></i></div>
-                    <h3>Our Mission</h3>
+                <aside class="expect reveal">
+                    <h4>What you can expect</h4>
+                    <p>Standards we hold ourselves to on every engagement.</p>
                     <ul>
-                        <li>Worldwide recognized company supporting diverse individuals</li>
-                        <li>Passionate about excellence and doing our work right</li>
-                        <li>Built on trust, respect, and collaboration</li>
-                        <li>We listen, learn, and seek out the best ideas</li>
+                        <li><i class="fas fa-user-tie"></i> A single, named point of contact</li>
+                        <li><i class="fas fa-clock"></i> Agreed turnaround times, confirmed in writing</li>
+                        <li><i class="fas fa-file-export"></i> Deliverables in web and print-ready formats</li>
+                        <li><i class="fas fa-lock"></i> Secure file transfer and redundant backups</li>
+                        <li><i class="fas fa-file-signature"></i> Confidentiality agreements accommodated on request</li>
+                        <li><i class="fas fa-camera-retro"></i> Insured, professional-grade equipment with on-site redundancy</li>
+                        <li><i class="fas fa-receipt"></i> Fixed quotations and compliant tax invoicing</li>
                     </ul>
-                    <div class="vm-tag">Excellence & Integrity</div>
+                </aside>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== INDUSTRIES ===== -->
+    <section class="industries alt" id="industries">
+        <div class="container">
+            <div class="section-head">
+                <span class="eyebrow">Who We Work With</span>
+                <h2>Industries we serve</h2>
+                <p>Experience across sectors with different governance, access and brand requirements.</p>
+            </div>
+
+            <div class="ind-grid">
+                <div class="ind-card reveal">
+                    <i class="fas fa-briefcase"></i>
+                    <h4>Corporate &amp; Enterprise</h4>
+                    <p>Communications, marketing, HR and investor content for established businesses.</p>
                 </div>
-                
-                <div class="vm-card full-width">
-                    <div class="icon"><i class="fas fa-heart"></i></div>
-                    <h3>Our Core Values</h3>
-                    <div class="values-grid">
-                        <div class="value-item">
-                            <span class="value-icon"><i class="fas fa-star"></i></span>
+                <div class="ind-card reveal">
+                    <i class="fas fa-landmark"></i>
+                    <h4>Government &amp; Public Sector</h4>
+                    <p>Programme documentation, launches and community engagement, delivered to procurement standards.</p>
+                </div>
+                <div class="ind-card reveal">
+                    <i class="fas fa-hand-holding-heart"></i>
+                    <h4>NGOs &amp; Development</h4>
+                    <p>Impact storytelling and donor-ready reporting content, captured sensitively in the field.</p>
+                </div>
+                <div class="ind-card reveal">
+                    <i class="fas fa-graduation-cap"></i>
+                    <h4>Education &amp; Training</h4>
+                    <p>Prospectus imagery, graduations, campus life and course content for institutions.</p>
+                </div>
+                <div class="ind-card reveal">
+                    <i class="fas fa-people-group"></i>
+                    <h4>Conferences &amp; Events</h4>
+                    <p>Full coverage for organisers, associations and agencies running large functions.</p>
+                </div>
+                <div class="ind-card reveal">
+                    <i class="fas fa-hotel"></i>
+                    <h4>Hospitality &amp; Tourism</h4>
+                    <p>Venue, property and destination content for booking, marketing and trade channels.</p>
+                </div>
+            </div>
+
+            <p class="ind-note">Client references are available on request, subject to confidentiality agreements.</p>
+        </div>
+    </section>
+
+    <!-- ===== WHY PARTNER ===== -->
+    <section class="why" id="why">
+        <div class="container">
+            <div class="section-head">
+                <span class="eyebrow">Why Our Capture</span>
+                <h2>What makes us a good partner</h2>
+                <p>The reasons organisations keep working with us after the first project.</p>
+            </div>
+
+            <div class="why-grid">
+                <div class="why-card reveal">
+                    <div class="why-icon"><i class="fas fa-layer-group"></i></div>
+                    <h4>Full creative range, one team</h4>
+                    <p>Photography, video and event coverage under one contract and one point of contact — consistent look, less coordination for you.</p>
+                </div>
+                <div class="why-card reveal">
+                    <div class="why-icon"><i class="fas fa-handshake-angle"></i></div>
+                    <h4>Reliability &amp; accountability</h4>
+                    <p>Written scope, fixed quotes, confirmed timelines and clear ownership. We do what we said we would.</p>
+                </div>
+
+                <div class="why-card partner reveal">
+                    <img class="partner-logo" src="images/tech-dev-logo.png" alt="Tech Dev Solutions">
+                    <h4>Technology partner: Tech Dev Solutions</h4>
+                    <p>When a brief extends into websites, portals or digital tools, we deliver it jointly with Tech Dev Solutions — one team accountable for creative and technical scope.</p>
+                    <a class="partner-link" href="https://www.techdevsolutions.co.za/" target="_blank" rel="noopener noreferrer">
+                        Visit Tech Dev Solutions <i class="fas fa-external-link-alt"></i>
+                    </a>
+                </div>
+
+                <div class="why-card reveal">
+                    <div class="why-icon"><i class="fas fa-map-location-dot"></i></div>
+                    <h4>Local presence, willing to travel</h4>
+                    <p>Based in Limpopo with knowledge of the region, and available to travel nationally for multi-site work.</p>
+                </div>
+                <div class="why-card reveal">
+                    <div class="why-icon"><i class="fas fa-certificate"></i></div>
+                    <h4>B-BBEE Level 1 procurement value</h4>
+                    <p>As a Level 1 contributor, engaging us supports your enterprise and supplier development and preferential procurement objectives.</p>
+                </div>
+                <div class="why-card reveal">
+                    <div class="why-icon"><i class="fas fa-gem"></i></div>
+                    <h4>Consistent, usable output</h4>
+                    <p>Files delivered organised, correctly formatted and ready to drop into reports, decks, sites and print.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== COMPLIANCE ===== -->
+    <section class="compliance" id="compliance">
+        <div class="container">
+            <div class="section-head on-dark">
+                <span class="eyebrow on-dark">Compliance &amp; Credentials</span>
+                <h2>Vendor &amp; due-diligence summary</h2>
+                <p>The details procurement and vendor-onboarding teams usually ask for, in one place.</p>
+            </div>
+
+            <div class="reg-table reveal">
+                <div class="reg-row">
+                    <div class="rk"><i class="fas fa-building"></i> Registered name</div>
+                    <div class="rv">Our Capture</div>
+                </div>
+                <div class="reg-row">
+                    <div class="rk"><i class="fas fa-file-contract"></i> Company registration</div>
+                    <div class="rv">2019/377494/07</div>
+                </div>
+                <div class="reg-row">
+                    <div class="rk"><i class="fas fa-file-invoice"></i> Tax reference number</div>
+                    <div class="rv">9986943166 — compliant tax invoices issued</div>
+                </div>
+                <div class="reg-row">
+                    <div class="rk"><i class="fas fa-award"></i> B-BBEE status</div>
+                    <div class="rv">Level 1 Contributor (certificate / affidavit available on request)</div>
+                </div>
+                <div class="reg-row">
+                    <div class="rk"><i class="fas fa-calendar-day"></i> Years in operation</div>
+                    <div class="rv">Established 2019</div>
+                </div>
+                <div class="reg-row">
+                    <div class="rk"><i class="fas fa-shield-halved"></i> Data protection</div>
+                    <div class="rv">POPIA-aligned handling, storage and disposal of personal information and footage</div>
+                </div>
+                <div class="reg-row">
+                    <div class="rk"><i class="fas fa-file-signature"></i> Confidentiality</div>
+                    <div class="rv">Client NDAs and confidentiality agreements accommodated</div>
+                </div>
+                <div class="reg-row">
+                    <div class="rk"><i class="fas fa-database"></i> Business continuity</div>
+                    <div class="rv">On-shoot data backup, redundant off-site storage and multi-operator capacity</div>
+                </div>
+                <div class="reg-row">
+                    <div class="rk"><i class="fas fa-camera-retro"></i> Equipment</div>
+                    <div class="rv">Professional-grade cameras, lighting and audio with on-site redundancy</div>
+                </div>
+                <div class="reg-row">
+                    <div class="rk"><i class="fas fa-handshake"></i> Delivery partner</div>
+                    <div class="rv">Tech Dev Solutions — technology development, for combined creative + digital scope</div>
+                </div>
+                <div class="reg-row">
+                    <div class="rk"><i class="fas fa-address-book"></i> References</div>
+                    <div class="rv">Contactable client references provided on request</div>
+                </div>
+            </div>
+
+            <p class="reg-note">
+                POPIA-aligned means personal information and captured material are collected, stored and
+                shared only for the agreed purpose, kept secure, and deleted or returned on request or at
+                the end of an agreed retention period. Formal certificates, affidavits and insurance
+                confirmations are shared directly with procurement teams on request.
+            </p>
+        </div>
+    </section>
+
+    <!-- ===== VISION / MISSION / VALUES ===== -->
+    <section class="vmv" id="vision">
+        <div class="container">
+            <div class="section-head on-dark">
+                <span class="eyebrow on-dark">Our Purpose</span>
+                <h2>Vision, mission &amp; values</h2>
+                <p>The principles behind how we run the business and treat our clients.</p>
+            </div>
+
+            <div class="vmv-grid">
+                <div class="vmv-card reveal">
+                    <div class="vmv-icon"><i class="fas fa-eye"></i></div>
+                    <h3>Our vision</h3>
+                    <p>
+                        To be a leading visual solutions partner in the region — bringing together
+                        creative craft and modern technology to deliver extraordinary results for
+                        the organisations we serve.
+                    </p>
+                    <span class="vmv-tag">Craft meets technology</span>
+                </div>
+
+                <div class="vmv-card reveal">
+                    <div class="vmv-icon"><i class="fas fa-bullseye"></i></div>
+                    <h3>Our mission</h3>
+                    <ul>
+                        <li>Deliver professional work that our clients are proud to put their name to</li>
+                        <li>Be dependable — clear scope, fair pricing, and delivery on schedule</li>
+                        <li>Build long-term relationships based on trust and respect</li>
+                        <li>Keep learning, and bring the best ideas and tools to every brief</li>
+                    </ul>
+                    <span class="vmv-tag">Excellence &amp; integrity</span>
+                </div>
+
+                <div class="vmv-card wide reveal">
+                    <div class="vmv-icon"><i class="fas fa-heart"></i></div>
+                    <h3>Our core values</h3>
+                    <div class="values">
+                        <div class="value">
+                            <i class="fas fa-star"></i>
                             <h5>Excellence</h5>
-                            <p>Committed to delivering the highest quality in every project</p>
+                            <p>The highest achievable quality on every project, large or small.</p>
                         </div>
-                        <div class="value-item">
-                            <span class="value-icon"><i class="fas fa-handshake"></i></span>
+                        <div class="value">
+                            <i class="fas fa-handshake"></i>
                             <h5>Integrity</h5>
-                            <p>Building trust through transparency and ethical practices</p>
+                            <p>Transparency, fair dealing and doing what we said we would.</p>
                         </div>
-                        <div class="value-item">
-                            <span class="value-icon"><i class="fas fa-lightbulb"></i></span>
+                        <div class="value">
+                            <i class="fas fa-lightbulb"></i>
                             <h5>Innovation</h5>
-                            <p>Embracing technology and creative solutions</p>
+                            <p>Using better tools and methods to serve the brief.</p>
                         </div>
-                        <div class="value-item">
-                            <span class="value-icon"><i class="fas fa-users"></i></span>
+                        <div class="value">
+                            <i class="fas fa-users"></i>
                             <h5>Collaboration</h5>
-                            <p>Working together for mutual success and growth</p>
+                            <p>Working as an extension of our clients' teams.</p>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
-    
+
     <!-- ===== CONTACT ===== -->
     <section class="contact" id="contact">
         <div class="container">
-            <div class="section-header">
-                <span class="tag">Connect With Us</span>
-                <h2>Let's <span>Partner</span> Together</h2>
-                <p>Reach out for partnerships, funding opportunities, or service inquiries</p>
+            <div class="section-head">
+                <span class="eyebrow">Get In Touch</span>
+                <h2>Let's talk about your project</h2>
+                <p>For partnerships, tenders, panel enrolment or a specific brief — we respond within one business day.</p>
             </div>
-            
+
             <div class="contact-grid">
                 <div class="contact-info">
-                    <h3>Ready to Work Together?</h3>
-                    <p>
-                        We welcome discussions with potential partners, investors, and clients. 
-                        Our team is ready to explore how we can create value together.
-                    </p>
-                    
-                    <div class="contact-details">
-                        <div class="contact-item">
-                            <i class="fas fa-map-marker-alt"></i>
+                    <h3>Contact details</h3>
+                    <p>We welcome enquiries from communications, marketing, procurement and events teams.</p>
+
+                    <div class="contact-list">
+                        <div class="c-item">
+                            <i class="fas fa-location-dot"></i>
                             <div class="info">
-                                <span class="label">Physical Address</span>
-                                <span class="value">93 Mphephu Main Road, Sabina Plaza, Office G4, Thohoyandou, 0950</span>
+                                <span class="k">Physical &amp; Postal Address</span>
+                                <span class="v">93 Mphephu Main Road, Sabina Plaza, Office G4, Thohoyandou, 0950</span>
                             </div>
                         </div>
-                        <div class="contact-item">
+                        <div class="c-item">
                             <i class="fas fa-phone"></i>
                             <div class="info">
-                                <span class="label">Contact Numbers</span>
-                                <span class="value">
-                                    <a href="tel:+27823655302">082 365 5302</a> / 
-                                    <a href="tel:+27814183840">081 418 3840</a>
-                                </span>
+                                <span class="k">Telephone</span>
+                                <span class="v"><a href="tel:+27823655302">082 365 5302</a> &nbsp;/&nbsp; <a href="tel:+27814183840">081 418 3840</a></span>
                             </div>
                         </div>
-                        <div class="contact-item">
+                        <div class="c-item">
                             <i class="fas fa-fax"></i>
                             <div class="info">
-                                <span class="label">Fax</span>
-                                <span class="value">0864 114 790</span>
+                                <span class="k">Fax</span>
+                                <span class="v">0864 114 790</span>
                             </div>
                         </div>
-                        <div class="contact-item">
+                        <div class="c-item">
                             <i class="fas fa-envelope"></i>
                             <div class="info">
-                                <span class="label">Email</span>
-                                <span class="value">
-                                    <a href="mailto:INFO@OURCAPTURE.CO.ZA">INFO@OURCAPTURE.CO.ZA</a>
-                                </span>
+                                <span class="k">Email</span>
+                                <span class="v"><a href="mailto:info@ourcapture.co.za">info@ourcapture.co.za</a></span>
                             </div>
                         </div>
-                        <div class="contact-item">
+                        <div class="c-item">
                             <i class="fas fa-globe"></i>
                             <div class="info">
-                                <span class="label">Website</span>
-                                <span class="value">
-                                    <a href="https://www.ourcapture.co.za" target="_blank">WWW.OURCAPTURE.CO.ZA</a>
-                                </span>
+                                <span class="k">Website</span>
+                                <span class="v"><a href="https://www.ourcapture.co.za" target="_blank" rel="noopener">www.ourcapture.co.za</a></span>
                             </div>
                         </div>
-                        <div class="contact-item highlight">
+                        <div class="c-item hl">
                             <i class="fas fa-file-contract"></i>
                             <div class="info">
-                                <span class="label">Company Registration</span>
-                                <span class="value">2019/377494/07</span>
+                                <span class="k">Company Registration</span>
+                                <span class="v">2019/377494/07</span>
                             </div>
                         </div>
-                        <div class="contact-item highlight">
+                        <div class="c-item hl">
                             <i class="fas fa-file-invoice"></i>
                             <div class="info">
-                                <span class="label">Tax Reference</span>
-                                <span class="value">9986943166</span>
+                                <span class="k">Tax Reference</span>
+                                <span class="v">9986943166</span>
+                            </div>
+                        </div>
+                        <div class="c-item hl">
+                            <i class="fas fa-award"></i>
+                            <div class="info">
+                                <span class="k">B-BBEE</span>
+                                <span class="v">Level 1 Contributor</span>
                             </div>
                         </div>
                     </div>
                 </div>
-                
+
                 <div class="contact-form">
-                    <h3>Send an Inquiry</h3>
+                    <h3>Send an enquiry</h3>
                     <form id="contactForm">
-                        <div class="form-group">
-                            <label for="name">Full Name <span class="required">*</span></label>
-                            <input type="text" id="name" placeholder="Enter your full name" required>
+                        <div class="fg">
+                            <label for="name">Full name <span class="required">*</span></label>
+                            <input type="text" id="name" placeholder="Your name" required>
                         </div>
-                        <div class="form-group">
-                            <label for="email">Email Address <span class="required">*</span></label>
-                            <input type="email" id="email" placeholder="Enter your email" required>
+                        <div class="fg">
+                            <label for="org">Organisation</label>
+                            <input type="text" id="org" placeholder="Company / institution">
                         </div>
-                        <div class="form-group">
-                            <label for="phone">Phone Number</label>
-                            <input type="tel" id="phone" placeholder="Enter your phone number">
+                        <div class="fg">
+                            <label for="email">Email address <span class="required">*</span></label>
+                            <input type="email" id="email" placeholder="you@organisation.co.za" required>
                         </div>
-                        <div class="form-group">
-                            <label for="interest">I'm Interested In <span class="required">*</span></label>
+                        <div class="fg">
+                            <label for="interest">Nature of enquiry <span class="required">*</span></label>
                             <select id="interest" required>
                                 <option value="">Select an option</option>
-                                <option value="partnership">Strategic Partnership</option>
-                                <option value="funding">Funding / Investment</option>
-                                <option value="photography">Photography Services</option>
-                                <option value="events">Event Services</option>
-                                <option value="videography">Videography Services</option>
-                                <option value="other">Other Inquiry</option>
+                                <option value="partnership">Partnership / panel enrolment</option>
+                                <option value="tender">Tender / RFQ</option>
+                                <option value="photography">Photography</option>
+                                <option value="videography">Videography</option>
+                                <option value="events">Event coverage</option>
+                                <option value="content">Ongoing corporate content</option>
+                                <option value="other">Other</option>
                             </select>
                         </div>
-                        <div class="form-group">
+                        <div class="fg">
                             <label for="message">Message <span class="required">*</span></label>
-                            <textarea id="message" placeholder="Tell us about your inquiry or project..." required></textarea>
+                            <textarea id="message" placeholder="Tell us about the project, dates and deliverables..." required></textarea>
                         </div>
-                        <button type="submit" class="btn-submit">
-                            <i class="fas fa-paper-plane"></i> Submit Inquiry
-                        </button>
+                        <button type="submit" class="btn-submit"><i class="fas fa-paper-plane"></i> Submit enquiry</button>
                     </form>
                 </div>
             </div>
         </div>
     </section>
-    
+
     <!-- ===== FOOTER ===== -->
     <footer class="footer">
         <div class="container">
-            <div class="footer-content">
-                <div>
-                    <a href="#" class="logo">
-                        <img src="logo.jpg" alt="Our Capture" style="height: 35px; width: auto; margin-right: 10px;">
-                        <span class="logo-text">Our<span>Capture</span></span>
-                    </a>
-                    <p style="color: rgba(255,255,255,0.4); font-size: 13px; margin-top: 10px;">
-                        Professional Visual Solutions
-                    </p>
+            <div class="footer-top">
+                <a href="#home" class="logo">
+                    <img src="logo.png" alt="Our Capture" style="height:34px;">
+                    <span class="logo-text">Our<span>Capture</span></span>
+                </a>
+                <div class="footer-reg">
+                    <span>B-BBEE Level 1</span>
+                    <span>Reg. 2019/377494/07</span>
+                    <span>Tax 9986943166</span>
+                    <span>Est. 2019</span>
                 </div>
-                
-                <div class="footer-info">
-                    <p>B-BBEE Level 1</p>
-                    <p>Reg: 2019/377494/07</p>
-                    <p>Tax: 9986943166</p>
-                </div>
-                
                 <div class="footer-socials">
-                    <a href="#"><i class="fab fa-facebook-f"></i></a>
-                    <a href="#"><i class="fab fa-instagram"></i></a>
-                    <a href="#"><i class="fab fa-youtube"></i></a>
-                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                    <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
                 </div>
             </div>
-            
             <div class="footer-bottom">
-                <p>&copy; 2026 Our Capture. All Rights Reserved.</p>
+                <p>&copy; 2026 Our Capture. All rights reserved. &nbsp;·&nbsp; Professional visual solutions &nbsp;·&nbsp; Thohoyandou, South Africa</p>
             </div>
         </div>
     </footer>
-    
+
     <script>
+        // mobile nav
         const menuToggle = document.getElementById('menuToggle');
         const navMenu = document.getElementById('navMenu');
-        menuToggle.addEventListener('click', function() {
-            this.classList.toggle('active');
-            navMenu.classList.toggle('active');
+        menuToggle.addEventListener('click', function () {
+            const open = this.classList.toggle('active');
+            navMenu.classList.toggle('active', open);
+            this.setAttribute('aria-expanded', open ? 'true' : 'false');
         });
-        document.querySelectorAll('.nav-menu a').forEach(link => {
+        navMenu.querySelectorAll('a').forEach(link => {
             link.addEventListener('click', () => {
                 menuToggle.classList.remove('active');
                 navMenu.classList.remove('active');
+                menuToggle.setAttribute('aria-expanded', 'false');
             });
         });
-        
+
+        // header background on scroll
         const header = document.getElementById('header');
-        window.addEventListener('scroll', function() {
-            if (window.scrollY > 100) {
-                header.classList.add('scrolled');
-            } else {
-                header.classList.remove('scrolled');
-            }
+        const onScroll = () => header.classList.toggle('scrolled', window.scrollY > 80);
+        onScroll();
+        window.addEventListener('scroll', onScroll, { passive: true });
+
+        // reveal on scroll
+        const revealEls = document.querySelectorAll('.reveal');
+        if ('IntersectionObserver' in window) {
+            const io = new IntersectionObserver((entries) => {
+                entries.forEach(e => {
+                    if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+                });
+            }, { threshold: 0.15 });
+            revealEls.forEach(el => io.observe(el));
+        } else {
+            revealEls.forEach(el => el.classList.add('in'));
+        }
+
+        // active nav link
+        const sections = [...document.querySelectorAll('section[id]')];
+        const navLinks = new Map([...navMenu.querySelectorAll('a')].map(a => [a.getAttribute('href').slice(1), a]));
+        if ('IntersectionObserver' in window) {
+            const spy = new IntersectionObserver((entries) => {
+                entries.forEach(e => {
+                    if (e.isIntersecting) {
+                        navLinks.forEach(a => a.classList.remove('active'));
+                        navLinks.get(e.target.id)?.classList.add('active');
+                    }
+                });
+            }, { rootMargin: '-45% 0px -50% 0px' });
+            sections.forEach(s => spy.observe(s));
+        }
+
+        // reveal everything before printing so nothing is invisible in the PDF
+        window.addEventListener('beforeprint', () => {
+            document.querySelectorAll('.reveal').forEach(el => el.classList.add('in'));
         });
-        
-        const stats = document.querySelectorAll('.stat-number');
-        const observer = new IntersectionObserver(function(entries) {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    const target = parseInt(entry.target.getAttribute('data-count'));
-                    let current = 0;
-                    const timer = setInterval(() => {
-                        current += target / 60;
-                        if (current >= target) {
-                            entry.target.textContent = target + (target > 100 ? '%' : '+');
-                            clearInterval(timer);
-                        } else {
-                            entry.target.textContent = Math.floor(current);
-                        }
-                    }, 33);
-                    observer.unobserve(entry.target);
-                }
-            });
-        }, { threshold: 0.3 });
-        stats.forEach(stat => observer.observe(stat));
-        
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) target.scrollIntoView({ behavior: 'smooth' });
-            });
-        });
-        
-        document.getElementById('contactForm').addEventListener('submit', function(e) {
+
+        // demo form handler
+        document.getElementById('contactForm').addEventListener('submit', function (e) {
             e.preventDefault();
-            alert('Thank you for your inquiry! Our team will respond within 24 hours.');
+            alert('Thank you for your enquiry. Our team will respond within one business day.');
             this.reset();
         });
     </script>
