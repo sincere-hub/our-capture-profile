@@ -1295,6 +1295,23 @@ section {
     color: rgba(255, 255, 255, 0.35);
 }
 
+.design-credit {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 12px;
+    font-size: 10px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.3);
+}
+
+.design-credit img {
+    height: 22px;
+    width: auto;
+}
+
 /* ===== FLOATING DOWNLOAD BUTTON ===== */
 .pdf-fab {
     position: fixed;
@@ -1482,7 +1499,8 @@ section {
 /* document shell is hidden on screen, shown only when printing */
 .doc-runner,
 .doc-cover,
-.doc-toc {
+.doc-toc,
+.doc-bg {
     display: none;
 }
 
@@ -1490,7 +1508,7 @@ section {
 
     @page {
         size: A4;
-        margin: 20mm 18mm;
+        margin: 14mm 15mm;
     }
 
     * {
@@ -1517,6 +1535,61 @@ section {
         -webkit-font-smoothing: auto;
     }
 
+    /* ===================== PAGE BACKGROUND DESIGN ===================== */
+    /* one fixed layer, clipped to the printable area, repeated on every
+       page and painted behind the content: a soft paper tint, a gold
+       edge rule and a faint corner monogram */
+    .doc-bg {
+        display: block;
+        position: fixed;
+        inset: 0;
+        z-index: -1;
+        overflow: hidden;
+        background:
+            radial-gradient(90mm 90mm at 100% 0%, rgba(200, 168, 98, 0.09), rgba(200, 168, 98, 0) 60%),
+            radial-gradient(120mm 120mm at 0% 100%, rgba(20, 24, 31, 0.04), rgba(20, 24, 31, 0) 60%),
+            #ffffff;
+    }
+
+    .doc-bg::before {
+        /* slim vertical gold rule down the inside edge */
+        content: "";
+        position: absolute;
+        left: 1.5mm;
+        top: 20mm;
+        bottom: 18mm;
+        width: 2.2pt;
+        background: linear-gradient(180deg,
+            rgba(200, 168, 98, 0) 0%,
+            rgba(200, 168, 98, 0.6) 16%,
+            rgba(200, 168, 98, 0.6) 84%,
+            rgba(200, 168, 98, 0) 100%);
+    }
+
+    .doc-bg::after {
+        /* faint horizontal tick that echoes the header rule */
+        content: "";
+        position: absolute;
+        right: 0;
+        top: 12mm;
+        width: 26mm;
+        height: 2.2pt;
+        background: rgba(200, 168, 98, 0.5);
+    }
+
+    .doc-bg-mark {
+        position: absolute;
+        right: -8mm;
+        bottom: -14mm;
+        font-family: var(--serif);
+        font-weight: 700;
+        font-size: 108pt;
+        line-height: 1;
+        letter-spacing: -0.04em;
+        color: rgba(20, 24, 31, 0.03);
+        user-select: none;
+    }
+
     /* ---- remove the entire website UI ---- */
     .header,
     .menu-toggle,
@@ -1535,47 +1608,53 @@ section {
         transform: none !important;
     }
 
-    /* ===================== RUNNING HEADER / FOOTER ===================== */
+    /* ===================== RUNNING HEADER / FOOTER =====================
+       No separately-flowed fixed runners (print engines clip and mis-place
+       them, which caused text to land on text). Instead the running head
+       and foot are faint labels that live inside the single .doc-bg layer
+       at z-index:-1 — so if body copy ever reaches them, the copy simply
+       paints on top and nothing overlaps illegibly. Every page block also
+       reserves top / bottom padding so the label bands stay clear. */
     .doc-runner {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        position: fixed;
-        left: 0;
-        right: 0;
-        z-index: 1;
+        display: none !important;
+    }
+
+    .doc-bg-head,
+    .doc-bg-foot-l,
+    .doc-bg-foot-r {
+        position: absolute;
         font-family: 'Inter', sans-serif;
-        font-size: 7.5pt;
+        font-size: 7pt;
         letter-spacing: 0.16em;
         text-transform: uppercase;
-        color: #9a938a;
+        color: #b3aca1;
         white-space: nowrap;
-        overflow: hidden;
     }
 
-    .doc-runner .run-logo {
-        height: 4.4mm;
-        width: auto;
-        opacity: 0.75;
+    .doc-bg-head {
+        top: 4.5mm;
+        left: 7mm;
+        padding-bottom: 1.6mm;
+        border-bottom: 0.5pt solid #e4dfd4;
+        padding-right: 30mm;
     }
 
-    .doc-runner.top {
-        top: -12mm;
-        padding-bottom: 2.4mm;
-        border-bottom: 0.5pt solid #d8d2c6;
+    .doc-bg-foot-l {
+        bottom: 4.5mm;
+        left: 7mm;
     }
 
-    .doc-runner.bottom {
-        bottom: -12mm;
-        padding-top: 2.4mm;
-        border-top: 0.5pt solid #d8d2c6;
+    .doc-bg-foot-r {
+        bottom: 4.5mm;
+        right: 0;
     }
 
     /* ===================== COVER PAGE ===================== */
     .doc-cover {
         display: flex;
         flex-direction: column;
-        min-height: 244mm;
+        min-height: 236mm;
+        padding: 13mm 0 12mm 7mm;
         page-break-after: always;
     }
 
@@ -1664,23 +1743,44 @@ section {
         color: #9a938a;
     }
 
+    .dc-credit {
+        display: flex;
+        align-items: center;
+        gap: 3mm;
+        margin-top: 6mm;
+        padding-top: 3.5mm;
+        border-top: 0.5pt solid #e2ddd2;
+        font-size: 6.6pt;
+        font-weight: 700;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        color: #9a938a;
+    }
+
+    .dc-credit img {
+        height: 6mm;
+        width: auto;
+    }
+
     /* ===================== CONTENTS PAGE ===================== */
     .doc-toc {
         display: block;
+        min-height: 236mm;
+        padding: 13mm 0 12mm 7mm;
     }
 
     .doc-toc h2 {
         font-family: var(--serif);
         font-weight: 600;
         font-size: 25pt;
-        margin-bottom: 12mm;
+        margin-bottom: 9mm;
         padding-bottom: 4mm;
         border-bottom: 1pt solid #14181f;
     }
 
     .toc-list {
         list-style: none;
-        margin: 0 0 14mm;
+        margin: 0 0 10mm;
         padding: 0;
     }
 
@@ -1688,7 +1788,7 @@ section {
         display: flex;
         align-items: baseline;
         gap: 9mm;
-        padding: 3.6mm 0;
+        padding: 2.7mm 0;
         border-bottom: 0.5pt solid #e2ddd2;
         font-size: 11.5pt;
     }
@@ -1706,7 +1806,7 @@ section {
     }
 
     .toc-particulars {
-        margin-bottom: 11mm;
+        margin-bottom: 8mm;
     }
 
     .toc-particulars h3 {
@@ -1748,9 +1848,9 @@ section {
 
     /* ===================== SECTIONS AS DOCUMENT PAGES ===================== */
     section {
-        padding: 0 !important;
+        padding: 13mm 0 12mm 7mm !important;
         margin: 0 !important;
-        background: #fff !important;
+        background: transparent !important;
         color: #14181f !important;
         page-break-before: always;
     }
@@ -1824,6 +1924,38 @@ section {
     a {
         color: inherit !important;
         text-decoration: none !important;
+    }
+
+    /* ---- neutralise icon-font glyphs in the PDF ----
+       webfont icons render unreliably in print engines and were dropping
+       stray marks at the top of pages; swap them for clean CSS bullets */
+    .svc-list i,
+    .expect li i,
+    .value i,
+    .c-item i,
+    .ind-card i,
+    .reg-row .rk i,
+    .partner-link i,
+    .vmv-tag i {
+        display: none !important;
+    }
+
+    .svc-list li,
+    .expect li {
+        position: relative;
+        padding-left: 4mm !important;
+    }
+
+    .svc-list li::before,
+    .expect li::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 0.62em;
+        width: 1.3mm;
+        height: 1.3mm;
+        border-radius: 50%;
+        background: var(--gold-deep) !important;
     }
 
     /* --- 01 COMPANY OVERVIEW --- */
@@ -2336,7 +2468,7 @@ section {
 
     /* closing colophon in place of the web footer */
     .contact .container::after {
-        content: "Our Capture  ·  Company Profile  ·  Reg. 2019/377494/07  ·  Tax 9986943166  ·  B-BBEE Level 1 Contributor  ·  info@ourcapture.co.za  ·  www.ourcapture.co.za";
+        content: "Our Capture  ·  Company Profile  ·  Reg. 2019/377494/07  ·  Tax 9986943166  ·  B-BBEE Level 1 Contributor  ·  ourcapture19@gmail.com  ·  www.ourcapture.co.za";
         display: block;
         margin-top: 11mm;
         padding-top: 4mm;
