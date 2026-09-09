@@ -1832,12 +1832,13 @@ section {
     }
 
     /* ===================== COVER PAGE ===================== */
-    /* Kept a touch under one page so it never spills a near-empty second
-       sheet; overflow:hidden is a belt-and-braces guard against the same. */
+    /* Held well under one printed page (whatever the browser's print margin)
+       and clipped, so it can never spill a near-empty second sheet. */
     .doc-cover {
         display: flex;
         flex-direction: column;
-        min-height: 236mm;
+        min-height: 220mm;
+        max-height: 250mm;
         overflow: hidden;
         padding: 13mm 0 12mm 7mm;
         page-break-after: always;
@@ -1953,7 +1954,6 @@ section {
     /* ===================== CONTENTS PAGE ===================== */
     .doc-toc {
         display: block;
-        min-height: 236mm;
         padding: 13mm 8mm 12mm 7mm;
         background: #fff;
     }
@@ -1995,18 +1995,14 @@ section {
     }
 
     /* Company particulars + "About this document" start their own page, so
-       the Contents list never has to share a page with them. The block is
-       centred on that page so the leftover space sits above and below it
-       instead of as one big gap at the bottom. */
+       the Contents list never has to share a page with them. Flows from the
+       top of that page — no forced height that could tip into a blank sheet. */
     .toc-back {
         page-break-before: always;
         break-before: page;
         page-break-inside: avoid;
         break-inside: avoid;
-        min-height: 226mm;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
+        padding-top: 13mm;
     }
 
     .toc-particulars {
@@ -2473,15 +2469,6 @@ section {
     }
 
     /* --- 04 INDUSTRIES --- */
-    /* Short section — centre the whole block on the page so the leftover
-       space is split above and below instead of dumped at the bottom. */
-    .industries {
-        display: flex !important;
-        flex-direction: column;
-        justify-content: center;
-        min-height: 236mm;
-    }
-
     .ind-grid {
         display: grid !important;
         grid-template-columns: 1fr 1fr;
@@ -2559,7 +2546,7 @@ section {
        photos, so the section opener here is set smaller and tighter than a
        normal section head and is glued to the grid that follows it. */
     .gallery {
-        padding-top: 9mm !important;
+        padding-top: 12mm !important;
     }
 
     .gallery .section-head {
@@ -2597,9 +2584,10 @@ section {
         break-inside: avoid !important;
     }
 
-    /* Client Spotlight starts on its own page, clear of the photo grid. */
+    /* Client Spotlight starts on its own page, clear of the photo grid.
+       Full top padding so its heading clears the running page header. */
     .client-feature {
-        padding-top: 0 !important;
+        padding-top: 13mm !important;
         border-top: none;
         page-break-before: always;
         break-before: page;
@@ -2758,20 +2746,6 @@ section {
     }
 
     /* --- 08 VISION, MISSION & VALUES --- */
-    /* Fill the whole sheet so the three blocks sit evenly down the page and
-       the closing colophon is pinned to the foot, not floating in the middle. */
-    .vmv {
-        display: flex !important;
-        flex-direction: column;
-        min-height: 236mm;
-    }
-
-    .vmv > .container {
-        display: flex !important;
-        flex-direction: column;
-        flex: 1 1 auto;
-    }
-
     .vmv-grid {
         display: grid !important;
         grid-template-columns: 1fr 1fr;
@@ -2860,13 +2834,12 @@ section {
         font-size: 6.8pt !important;
     }
 
-    /* closing colophon on the values page — left-aligned and pinned to the
-       foot of the sheet by the flex column above (replaces the stray
-       dev-server URL some browsers stamp here). */
+    /* closing colophon on the values page — left-aligned, sits below the
+       content (replaces the stray dev-server URL some browsers stamp here). */
     .vmv .container::after {
         content: "Our Capture  ·  Company Profile  ·  Reg. 2019/377494/07  ·  Tax 9986943166  ·  B-BBEE Level 1 Contributor  ·  ourcapture19@gmail.com  ·  www.ourcapture.co.za";
         display: block;
-        margin-top: auto;
+        margin-top: 12mm;
         padding-top: 4mm;
         border-top: 1pt solid #14181f;
         font-size: 7.4pt;
@@ -2876,20 +2849,6 @@ section {
     }
 
     /* --- 09 CONTACT --- */
-    /* The final page fills the whole sheet and the closing colophon is
-       pinned to the bottom of it rather than floating below short copy. */
-    .contact {
-        display: flex !important;
-        flex-direction: column;
-        min-height: 236mm;
-    }
-
-    .contact > .container {
-        display: flex !important;
-        flex-direction: column;
-        flex: 1 1 auto;
-    }
-
     .contact-grid {
         display: block !important;
     }
@@ -2939,12 +2898,11 @@ section {
         font-size: 8.8pt !important;
     }
 
-    /* closing colophon in place of the web footer — pushed to the foot of
-       the last page by the flex column above */
+    /* closing colophon in place of the web footer — sits below the content */
     .contact .container::after {
         content: "Our Capture  ·  Company Profile  ·  Reg. 2019/377494/07  ·  Tax 9986943166  ·  B-BBEE Level 1 Contributor  ·  ourcapture19@gmail.com  ·  www.ourcapture.co.za";
         display: block;
-        margin-top: auto;
+        margin-top: 12mm;
         padding-top: 4mm;
         border-top: 1pt solid #14181f;
         font-size: 7.4pt;
