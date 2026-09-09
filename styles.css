@@ -1978,8 +1978,30 @@ section {
         font-weight: 500;
     }
 
+    /* Company particulars + "About this document" start their own page, so
+       the Contents list never has to share a page with them. The block is
+       centred on that page so the leftover space sits above and below it
+       instead of as one big gap at the bottom. */
+    .toc-back {
+        page-break-before: always;
+        break-before: page;
+        page-break-inside: avoid;
+        break-inside: avoid;
+        min-height: 226mm;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
     .toc-particulars {
         margin-bottom: 8mm;
+        page-break-inside: avoid;
+        break-inside: avoid;
+    }
+
+    .toc-particulars table {
+        page-break-inside: avoid;
+        break-inside: avoid;
     }
 
     .toc-particulars h3 {
@@ -2072,7 +2094,6 @@ section {
     .services,
     .work,
     .industries,
-    .portfolio,
     .gallery,
     .why,
     .compliance,
@@ -2430,6 +2451,15 @@ section {
     }
 
     /* --- 04 INDUSTRIES --- */
+    /* Short section — centre the whole block on the page so the leftover
+       space is split above and below instead of dumped at the bottom. */
+    .industries {
+        display: flex !important;
+        flex-direction: column;
+        justify-content: center;
+        min-height: 236mm;
+    }
+
     .ind-grid {
         display: grid !important;
         grid-template-columns: 1fr 1fr;
@@ -2467,9 +2497,8 @@ section {
         margin-top: 6mm !important;
     }
 
-    /* --- 05 PORTFOLIO CATEGORIES --- */
-    /* Three columns (not two) so the larger photo grids — Gallery runs to
-       14 images plus the Client Spotlight — pack into roughly a page
+    /* --- 05 SELECTED WORK --- */
+    /* Three columns (not two) so the photo grids pack into roughly a page
        instead of sprawling across several, some nearly empty. */
     .portfolio-grid {
         display: grid !important;
@@ -2502,14 +2531,56 @@ section {
         font-size: 7.2pt !important;
     }
 
-    /* --- 06 GALLERY --- */
-    .gallery-grid {
-        margin-bottom: 8mm !important;
+    /* --- 06 SELECTED WORK / "MORE FRAMES" --- */
+    /* The portfolio pictures and the "more frames" set are merged into this
+       one category on one page. The heading must sit on the same page as its
+       photos, so the section opener here is set smaller and tighter than a
+       normal section head and is glued to the grid that follows it. */
+    .gallery {
+        padding-top: 9mm !important;
     }
 
+    .gallery .section-head {
+        margin: 0 0 5mm !important;
+        padding-bottom: 3mm;
+        page-break-after: avoid;
+        break-after: avoid;
+    }
+
+    .gallery .section-head h2,
+    .gallery .section-head.on-dark h2 {
+        font-size: 14pt !important;
+    }
+
+    .gallery .section-head h2::before {
+        font-size: 7pt;
+        margin-bottom: 2mm;
+    }
+
+    .gallery .section-head p,
+    .gallery .section-head.on-dark p {
+        margin-top: 2mm !important;
+        font-size: 8.4pt !important;
+    }
+
+    /* Keep the whole merged photo grid (portfolio + more frames, 20 images)
+       on a single page — four columns instead of three so the extra frames
+       still pack into one page, and the block moves intact rather than
+       letting rows spill over. */
+    .gallery-grid {
+        grid-template-columns: repeat(4, 1fr) !important;
+        gap: 2.5mm !important;
+        margin-bottom: 6mm !important;
+        page-break-inside: avoid !important;
+        break-inside: avoid !important;
+    }
+
+    /* Client Spotlight starts on its own page, clear of the photo grid. */
     .client-feature {
-        padding-top: 6mm !important;
-        border-top: 0.5pt solid #e2ddd2;
+        padding-top: 0 !important;
+        border-top: none;
+        page-break-before: always;
+        break-before: page;
         page-break-inside: avoid;
         break-inside: avoid;
     }
@@ -2664,11 +2735,26 @@ section {
         margin-top: 5mm;
     }
 
-    /* --- 09 VISION, MISSION & VALUES --- */
+    /* --- 08 VISION, MISSION & VALUES --- */
+    /* Fill the whole sheet so the three blocks sit evenly down the page and
+       the closing colophon is pinned to the foot, not floating in the middle. */
+    .vmv {
+        display: flex !important;
+        flex-direction: column;
+        min-height: 236mm;
+    }
+
+    .vmv > .container {
+        display: flex !important;
+        flex-direction: column;
+        flex: 1 1 auto;
+    }
+
     .vmv-grid {
         display: grid !important;
         grid-template-columns: 1fr 1fr;
-        gap: 7mm !important;
+        gap: 9mm !important;
+        align-items: stretch;
     }
 
     .vmv-card {
@@ -2678,10 +2764,20 @@ section {
         border-radius: 0 !important;
         padding: 3.6mm 0 0 !important;
         page-break-inside: avoid;
+        display: flex !important;
+        flex-direction: column;
+    }
+
+    /* push each card's tag to its foot so "Our vision" and "Our mission"
+       line up along the bottom despite their different body lengths */
+    .vmv-card .vmv-tag {
+        margin-top: auto !important;
+        align-self: flex-start;
     }
 
     .vmv-card.wide {
         grid-column: 1 / -1;
+        margin-top: 6mm;
     }
 
     .vmv-card .vmv-icon {
@@ -2742,7 +2838,36 @@ section {
         font-size: 6.8pt !important;
     }
 
-    /* --- 10 CONTACT --- */
+    /* closing colophon on the values page — left-aligned and pinned to the
+       foot of the sheet by the flex column above (replaces the stray
+       dev-server URL some browsers stamp here). */
+    .vmv .container::after {
+        content: "Our Capture  ·  Company Profile  ·  Reg. 2019/377494/07  ·  Tax 9986943166  ·  B-BBEE Level 1 Contributor  ·  ourcapture19@gmail.com  ·  www.ourcapture.co.za";
+        display: block;
+        margin-top: auto;
+        padding-top: 4mm;
+        border-top: 1pt solid #14181f;
+        font-size: 7.4pt;
+        letter-spacing: 0.05em;
+        color: #6a6f77;
+        text-align: left;
+    }
+
+    /* --- 09 CONTACT --- */
+    /* The final page fills the whole sheet and the closing colophon is
+       pinned to the bottom of it rather than floating below short copy. */
+    .contact {
+        display: flex !important;
+        flex-direction: column;
+        min-height: 236mm;
+    }
+
+    .contact > .container {
+        display: flex !important;
+        flex-direction: column;
+        flex: 1 1 auto;
+    }
+
     .contact-grid {
         display: block !important;
     }
@@ -2792,11 +2917,12 @@ section {
         font-size: 8.8pt !important;
     }
 
-    /* closing colophon in place of the web footer */
+    /* closing colophon in place of the web footer — pushed to the foot of
+       the last page by the flex column above */
     .contact .container::after {
         content: "Our Capture  ·  Company Profile  ·  Reg. 2019/377494/07  ·  Tax 9986943166  ·  B-BBEE Level 1 Contributor  ·  ourcapture19@gmail.com  ·  www.ourcapture.co.za";
         display: block;
-        margin-top: 11mm;
+        margin-top: auto;
         padding-top: 4mm;
         border-top: 1pt solid #14181f;
         font-size: 7.4pt;
