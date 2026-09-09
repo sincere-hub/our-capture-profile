@@ -312,6 +312,7 @@ section {
 .hero {
     position: relative;
     min-height: 100vh;
+    min-height: 100svh;
     display: flex;
     align-items: center;
     background: var(--ink);
@@ -839,10 +840,11 @@ section {
     background: var(--paper);
 }
 
+/* Masonry columns so every photo shows at its own aspect ratio — portrait
+   and landscape alike open fully instead of being cropped to a 4:3 slot. */
 .portfolio-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 20px;
+    columns: 3;
+    column-gap: 20px;
 }
 
 .portfolio-card {
@@ -851,6 +853,9 @@ section {
     border: 1px solid var(--line);
     border-radius: var(--radius);
     transition: var(--t);
+    break-inside: avoid;
+    -webkit-column-break-inside: avoid;
+    margin-bottom: 20px;
 }
 
 .portfolio-card:hover {
@@ -884,8 +889,7 @@ section {
 .portfolio-card > img {
     display: block;
     width: 100%;
-    aspect-ratio: 4 / 3;
-    object-fit: cover;
+    height: auto;
 }
 
 /* ===== GALLERY ===== */
@@ -1546,9 +1550,12 @@ section {
 
     .svc-grid,
     .ind-grid,
-    .why-grid,
-    .portfolio-grid {
+    .why-grid {
         grid-template-columns: repeat(2, 1fr);
+    }
+
+    .portfolio-grid {
+        columns: 2;
     }
 
     .svc-strip,
@@ -1603,11 +1610,14 @@ section {
 
     .svc-grid,
     .ind-grid,
-    .portfolio-grid,
     .why-grid,
     .facts,
     .values {
         grid-template-columns: 1fr;
+    }
+
+    .portfolio-grid {
+        columns: 1;
     }
 
     .svc-strip {
