@@ -1801,7 +1801,6 @@ section {
         display: none !important;
     }
 
-    .doc-bg-head,
     .doc-bg-foot-l,
     .doc-bg-foot-r {
         position: absolute;
@@ -1813,12 +1812,11 @@ section {
         white-space: nowrap;
     }
 
+    /* Running top label removed: on any page a section spilled onto, it had
+       no top padding to clear and body copy could print over it. The folio
+       number and the foot labels carry the running identity instead. */
     .doc-bg-head {
-        top: 4.5mm;
-        left: 7mm;
-        padding-bottom: 1.6mm;
-        border-bottom: 0.5pt solid #e4dfd4;
-        padding-right: 30mm;
+        display: none !important;
     }
 
     .doc-bg-foot-l {
@@ -1841,6 +1839,7 @@ section {
         max-height: 250mm;
         overflow: hidden;
         padding: 13mm 0 12mm 7mm;
+        background: #fff;
         page-break-after: always;
         break-after: page;
         page-break-inside: avoid;
@@ -1875,8 +1874,8 @@ section {
     .doc-cover h1 {
         font-family: var(--serif);
         font-weight: 600;
-        font-size: 60pt;
-        line-height: 0.96;
+        font-size: 56pt;
+        line-height: 1.06;
         letter-spacing: -0.02em;
         color: #14181f;
         margin: 0;
@@ -2273,9 +2272,9 @@ section {
         float: left;
         font-family: var(--serif);
         font-weight: 700;
-        font-size: 32pt;
-        line-height: 0.78;
-        padding: 1mm 2mm 0 0;
+        font-size: 30pt;
+        line-height: 1;
+        padding: 0 2.5mm 0 0;
         color: var(--gold-deep);
     }
 
