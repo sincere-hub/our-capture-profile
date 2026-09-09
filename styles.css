@@ -456,8 +456,9 @@ section {
 
 .hero-figure img {
     width: 100%;
-    aspect-ratio: 4 / 5;
+    aspect-ratio: 4 / 4.6;
     object-fit: cover;
+    object-position: 50% 50%;
     border-radius: 16px;
 }
 
@@ -816,6 +817,83 @@ section {
     font-size: 22px;
     color: var(--gold-deep);
     margin-bottom: 14px;
+}
+
+/* ===== PORTFOLIO ===== */
+.portfolio {
+    background: var(--paper);
+}
+
+.portfolio-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+.portfolio-card {
+    overflow: hidden;
+    background: #fff;
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    transition: var(--t);
+}
+
+.portfolio-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow);
+}
+
+.portfolio-placeholder {
+    aspect-ratio: 4 / 3;
+    padding: 24px;
+    display: grid;
+    place-content: center;
+    gap: 12px;
+    text-align: center;
+    color: var(--muted);
+    background: linear-gradient(135deg, #f5f2eb, #ebe6da);
+    border-bottom: 1px solid var(--line);
+}
+
+.portfolio-placeholder i {
+    color: var(--gold-deep);
+    font-size: 1.7rem;
+}
+
+.portfolio-placeholder span {
+    max-width: 220px;
+    font-size: 0.78rem;
+    line-height: 1.55;
+}
+
+.portfolio-card > img {
+    display: block;
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+    border-bottom: 1px solid var(--line);
+}
+
+.portfolio-card figcaption {
+    padding: 18px 20px 20px;
+}
+
+.portfolio-card figcaption strong,
+.portfolio-card figcaption span {
+    display: block;
+}
+
+.portfolio-card figcaption strong {
+    margin-bottom: 5px;
+    color: var(--ink);
+    font-family: var(--serif);
+    font-size: 1.12rem;
+}
+
+.portfolio-card figcaption span {
+    color: var(--muted);
+    font-size: 0.78rem;
+    line-height: 1.55;
 }
 
 .ind-card h4 {
@@ -1449,6 +1527,7 @@ section {
 
     .svc-grid,
     .ind-grid,
+    .portfolio-grid,
     .why-grid,
     .facts,
     .values {
@@ -1543,12 +1622,22 @@ section {
         display: block;
         position: fixed;
         inset: 0;
-        z-index: -1;
+        z-index: 0;
+        pointer-events: none;
         overflow: hidden;
         background:
+            linear-gradient(90deg, rgba(200, 168, 98, 0.055) 0, rgba(200, 168, 98, 0.055) 2.2mm, transparent 2.2mm),
             radial-gradient(90mm 90mm at 100% 0%, rgba(200, 168, 98, 0.09), rgba(200, 168, 98, 0) 60%),
             radial-gradient(120mm 120mm at 0% 100%, rgba(20, 24, 31, 0.04), rgba(20, 24, 31, 0) 60%),
             #ffffff;
+    }
+
+    /* Keep the repeating PDF artwork reliably behind every document page.
+       A non-negative stack level avoids print-engine differences around
+       negative fixed layers. */
+    body > :not(.doc-bg) {
+        position: relative;
+        z-index: 1;
     }
 
     .doc-bg::before {
@@ -1586,7 +1675,7 @@ section {
         font-size: 108pt;
         line-height: 1;
         letter-spacing: -0.04em;
-        color: rgba(20, 24, 31, 0.03);
+        color: rgba(20, 24, 31, 0.035);
         user-select: none;
     }
 
@@ -1864,6 +1953,7 @@ section {
     .services,
     .work,
     .industries,
+    .portfolio,
     .why,
     .compliance,
     .vmv,
@@ -1934,6 +2024,7 @@ section {
     .value i,
     .c-item i,
     .ind-card i,
+    .portfolio-placeholder i,
     .reg-row .rk i,
     .partner-link i,
     .vmv-tag i {
@@ -2231,7 +2322,51 @@ section {
         margin-top: 6mm !important;
     }
 
-    /* --- 05 WHY OUR CAPTURE --- */
+    /* --- 05 PORTFOLIO CATEGORIES --- */
+    .portfolio-grid {
+        display: grid !important;
+        grid-template-columns: 1fr 1fr !important;
+        gap: 5mm !important;
+    }
+
+    .portfolio-card {
+        border: 0.5pt solid #e2ddd2 !important;
+        border-radius: 0 !important;
+        page-break-inside: avoid;
+    }
+
+    .portfolio-placeholder,
+    .portfolio-card > img {
+        aspect-ratio: 4 / 2 !important;
+    }
+
+    .portfolio-placeholder {
+        padding: 3mm !important;
+        font-size: 7.5pt;
+    }
+
+    .portfolio-placeholder i {
+        font-size: 11pt !important;
+    }
+
+    .portfolio-placeholder span {
+        font-size: 7.2pt !important;
+    }
+
+    .portfolio-card figcaption {
+        padding: 3mm 3.5mm !important;
+    }
+
+    .portfolio-card figcaption strong {
+        font-size: 9pt !important;
+        margin-bottom: 1mm !important;
+    }
+
+    .portfolio-card figcaption span {
+        font-size: 6.8pt !important;
+    }
+
+    /* --- 06 WHY OUR CAPTURE --- */
     .why-grid {
         display: grid !important;
         grid-template-columns: 1fr 1fr;
