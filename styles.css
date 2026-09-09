@@ -1939,9 +1939,7 @@ section {
         display: block;
         min-height: 236mm;
         padding: 13mm 8mm 12mm 7mm;
-        background:
-            linear-gradient(135deg, rgba(200, 168, 98, 0.10), rgba(255, 255, 255, 0) 42%),
-            linear-gradient(315deg, rgba(20, 24, 31, 0.035), rgba(255, 255, 255, 0) 40%);
+        background: #fff;
     }
 
     .doc-toc h2 {
@@ -2022,25 +2020,18 @@ section {
     }
 
     /* ===================== SECTIONS AS DOCUMENT PAGES ===================== */
-    /* Every section becomes its own printed page. Each one carries a very
-       light, print-safe corner wash (alternating direction page to page) so
-       the whole document reads as designed rather than a handful of pages
-       with colour and the rest left flat white. */
+    /* Every section becomes its own printed page on a plain white paper base. */
     section {
         padding: 13mm 0 12mm 7mm !important;
         margin: 0 !important;
         color: #14181f !important;
         page-break-before: always;
         break-before: page;
-        background:
-            linear-gradient(135deg, rgba(200, 168, 98, 0.10), rgba(255, 255, 255, 0) 42%),
-            linear-gradient(315deg, rgba(20, 24, 31, 0.035), rgba(255, 255, 255, 0) 40%) !important;
+        background: #fff !important;
     }
 
     section:nth-of-type(even) {
-        background:
-            linear-gradient(315deg, rgba(200, 168, 98, 0.09), rgba(255, 255, 255, 0) 45%),
-            linear-gradient(135deg, rgba(20, 24, 31, 0.04), rgba(255, 255, 255, 0) 42%) !important;
+        background: #fff !important;
     }
 
     .section-head {
