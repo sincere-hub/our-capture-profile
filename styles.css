@@ -506,6 +506,21 @@ section {
     object-fit: cover;
 }
 
+.about-figure--logo {
+    height: 460px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--paper-2);
+}
+
+.about-figure--logo img {
+    width: auto;
+    height: auto;
+    max-width: 46%;
+    object-fit: contain;
+}
+
 .about-figure .badge {
     position: absolute;
     left: 20px;
@@ -871,29 +886,74 @@ section {
     width: 100%;
     aspect-ratio: 4 / 3;
     object-fit: cover;
-    border-bottom: 1px solid var(--line);
 }
 
-.portfolio-card figcaption {
-    padding: 18px 20px 20px;
+/* ===== GALLERY ===== */
+.gallery-grid {
+    margin-bottom: 56px;
 }
 
-.portfolio-card figcaption strong,
-.portfolio-card figcaption span {
+.client-feature {
+    padding-top: 44px;
+    border-top: 1px solid var(--line);
+}
+
+.client-feature-head {
+    margin-bottom: 24px;
+}
+
+.cf-eyebrow {
     display: block;
-}
-
-.portfolio-card figcaption strong {
-    margin-bottom: 5px;
-    color: var(--ink);
-    font-family: var(--serif);
-    font-size: 1.12rem;
-}
-
-.portfolio-card figcaption span {
-    color: var(--muted);
+    font-family: 'Inter', sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
     font-size: 0.78rem;
-    line-height: 1.55;
+    font-weight: 700;
+    color: var(--gold-deep);
+    margin-bottom: 8px;
+}
+
+.client-feature-head h3 {
+    font-family: var(--serif);
+    font-size: 1.7rem;
+    margin-bottom: 6px;
+}
+
+.client-feature-head p {
+    color: var(--muted);
+}
+
+.client-feature-grid {
+    display: grid;
+    grid-template-columns: 1.4fr 1fr;
+    grid-template-rows: repeat(3, 1fr);
+    gap: 16px;
+}
+
+.cf-main,
+.cf-side {
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+}
+
+.cf-main {
+    grid-row: 1 / 4;
+}
+
+.cf-main img,
+.cf-side img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.cf-main img {
+    aspect-ratio: 3 / 4;
+}
+
+.cf-side img {
+    aspect-ratio: 16 / 6;
 }
 
 .ind-card h4 {
@@ -1456,9 +1516,23 @@ section {
     .hero .container,
     .about-grid,
     .work-layout,
-    .contact-grid {
+    .contact-grid,
+    .client-feature-grid {
         grid-template-columns: 1fr;
         gap: 44px;
+    }
+
+    .client-feature-grid {
+        grid-template-rows: auto;
+        gap: 16px;
+    }
+
+    .cf-main {
+        grid-row: auto;
+    }
+
+    .cf-main img {
+        aspect-ratio: 16 / 9;
     }
 
     .hero .container {
@@ -1472,7 +1546,8 @@ section {
 
     .svc-grid,
     .ind-grid,
-    .why-grid {
+    .why-grid,
+    .portfolio-grid {
         grid-template-columns: repeat(2, 1fr);
     }
 
@@ -1494,9 +1569,10 @@ section {
         justify-content: center;
         align-items: flex-start;
         padding: 48px;
-        gap: 26px;
+        gap: 22px;
         transition: var(--t);
         box-shadow: -20px 0 50px rgba(0, 0, 0, 0.3);
+        overflow-y: auto;
     }
 
     .nav-menu.active {
@@ -1615,29 +1691,36 @@ section {
     }
 
     /* ===================== PAGE BACKGROUND DESIGN ===================== */
-    /* one fixed layer, clipped to the printable area, repeated on every
-       page and painted behind the content: a soft paper tint, a gold
-       edge rule and a faint corner monogram */
+    /* .doc-bg is a fixed "page furniture" layer, repeated on every printed
+       page, that carries only the running header/footer, the gold edge
+       rule and the faint corner monogram — content pages now provide
+       their own background (photo or wash), so this layer has no fill of
+       its own and simply floats its decorative children on top, clear of
+       every page's content padding. body's own white fill is the paper
+       base for pages that don't set a photo background. */
     .doc-bg {
         display: block;
         position: fixed;
         inset: 0;
-        z-index: 0;
+        z-index: 2;
         pointer-events: none;
         overflow: hidden;
-        background:
-            linear-gradient(90deg, rgba(200, 168, 98, 0.055) 0, rgba(200, 168, 98, 0.055) 2.2mm, transparent 2.2mm),
-            radial-gradient(90mm 90mm at 100% 0%, rgba(200, 168, 98, 0.09), rgba(200, 168, 98, 0) 60%),
-            radial-gradient(120mm 120mm at 0% 100%, rgba(20, 24, 31, 0.04), rgba(20, 24, 31, 0) 60%),
-            #ffffff;
     }
 
-    /* Keep the repeating PDF artwork reliably behind every document page.
-       A non-negative stack level avoids print-engine differences around
-       negative fixed layers. */
-    body > :not(.doc-bg) {
+    /* The running header/footer, gold edge rule and monogram live in the
+       single .doc-bg layer and must stay visible on every page — including
+       ones with their own full-bleed photo background, which would
+       otherwise paint over and hide them. So .doc-bg sits above ordinary
+       content pages. The cover is the one exception: it has its own
+       bespoke header/footer (dc-top/dc-foot), so it stays on top of
+       .doc-bg instead, unchanged from before. */
+    body > :not(.doc-bg):not(.doc-cover) {
         position: relative;
         z-index: 1;
+    }
+
+    .doc-cover {
+        z-index: 3;
     }
 
     .doc-bg::before {
@@ -1855,7 +1938,10 @@ section {
     .doc-toc {
         display: block;
         min-height: 236mm;
-        padding: 13mm 0 12mm 7mm;
+        padding: 13mm 8mm 12mm 7mm;
+        background:
+            linear-gradient(135deg, rgba(200, 168, 98, 0.10), rgba(255, 255, 255, 0) 42%),
+            linear-gradient(315deg, rgba(20, 24, 31, 0.035), rgba(255, 255, 255, 0) 40%);
     }
 
     .doc-toc h2 {
@@ -1936,15 +2022,57 @@ section {
     }
 
     /* ===================== SECTIONS AS DOCUMENT PAGES ===================== */
+    /* Every section becomes its own printed page. Each one carries a very
+       light, print-safe corner wash (alternating direction page to page) so
+       the whole document reads as designed rather than a handful of pages
+       with colour and the rest left flat white. */
     section {
         padding: 13mm 0 12mm 7mm !important;
         margin: 0 !important;
-        background: transparent !important;
         color: #14181f !important;
         page-break-before: always;
+        break-before: page;
+        background:
+            linear-gradient(135deg, rgba(200, 168, 98, 0.10), rgba(255, 255, 255, 0) 42%),
+            linear-gradient(315deg, rgba(20, 24, 31, 0.035), rgba(255, 255, 255, 0) 40%) !important;
+    }
+
+    section:nth-of-type(even) {
+        background:
+            linear-gradient(315deg, rgba(200, 168, 98, 0.09), rgba(255, 255, 255, 0) 45%),
+            linear-gradient(135deg, rgba(20, 24, 31, 0.04), rgba(255, 255, 255, 0) 42%) !important;
+    }
+
+    .section-head {
+        border-bottom-color: var(--gold-deep) !important;
+    }
+
+    /* Faint folio number in the top-right of every page — the same "faint
+       giant mark" trick as the cover's OC monogram, just counting through
+       the document. Sized and faded to sit inside the top padding band
+       only, above where any heading or body text starts, and kept at the
+       same very-low opacity as the OC mark so it can never read as an
+       overlap even on pages with longer headlines. */
+    section {
+        position: relative;
+    }
+
+    section::before {
+        content: counter(sec, decimal-leading-zero);
+        position: absolute;
+        top: 0;
+        right: 4mm;
+        font-family: var(--serif);
+        font-weight: 700;
+        font-size: 30pt;
+        line-height: 1;
+        letter-spacing: -0.02em;
+        color: rgba(200, 168, 98, 0.14);
+        pointer-events: none;
     }
 
     section > .container {
+        position: relative;
         max-width: 100%;
         padding: 0;
     }
@@ -1954,6 +2082,7 @@ section {
     .work,
     .industries,
     .portfolio,
+    .gallery,
     .why,
     .compliance,
     .vmv,
@@ -2068,6 +2197,20 @@ section {
         height: 74mm !important;
     }
 
+    .about-figure--logo {
+        display: flex !important;
+        align-items: center;
+        justify-content: center;
+        background: #f7f5ef !important;
+    }
+
+    .about-figure--logo img {
+        width: auto !important;
+        height: auto !important;
+        max-width: 55% !important;
+        object-fit: contain !important;
+    }
+
     .about-figure .badge {
         position: static !important;
         display: block;
@@ -2091,8 +2234,19 @@ section {
 
     .about-body p {
         font-size: 9.6pt !important;
-        color: #3c414a !important;
         margin-bottom: 3.4mm !important;
+    }
+
+    /* editorial drop cap on the opening line of the document's first
+       real page of copy */
+    .about-body p:first-of-type::first-letter {
+        float: left;
+        font-family: var(--serif);
+        font-weight: 700;
+        font-size: 32pt;
+        line-height: 0.78;
+        padding: 1mm 2mm 0 0;
+        color: var(--gold-deep);
     }
 
     .facts {
@@ -2323,21 +2477,25 @@ section {
     }
 
     /* --- 05 PORTFOLIO CATEGORIES --- */
+    /* Three columns (not two) so the larger photo grids — Gallery runs to
+       14 images plus the Client Spotlight — pack into roughly a page
+       instead of sprawling across several, some nearly empty. */
     .portfolio-grid {
         display: grid !important;
-        grid-template-columns: 1fr 1fr !important;
-        gap: 5mm !important;
+        grid-template-columns: repeat(3, 1fr) !important;
+        gap: 4mm !important;
     }
 
     .portfolio-card {
         border: 0.5pt solid #e2ddd2 !important;
         border-radius: 0 !important;
         page-break-inside: avoid;
+        break-inside: avoid;
     }
 
     .portfolio-placeholder,
     .portfolio-card > img {
-        aspect-ratio: 4 / 2 !important;
+        aspect-ratio: 4 / 3 !important;
     }
 
     .portfolio-placeholder {
@@ -2353,20 +2511,62 @@ section {
         font-size: 7.2pt !important;
     }
 
-    .portfolio-card figcaption {
-        padding: 3mm 3.5mm !important;
+    /* --- 06 GALLERY --- */
+    .gallery-grid {
+        margin-bottom: 8mm !important;
     }
 
-    .portfolio-card figcaption strong {
+    .client-feature {
+        padding-top: 6mm !important;
+        border-top: 0.5pt solid #e2ddd2;
+        page-break-inside: avoid;
+        break-inside: avoid;
+    }
+
+    .client-feature-head {
+        margin-bottom: 5mm !important;
+    }
+
+    .cf-eyebrow {
+        font-size: 7.5pt !important;
+    }
+
+    .client-feature-head h3 {
+        font-size: 15pt !important;
+        margin-bottom: 1.5mm !important;
+    }
+
+    .client-feature-head p {
         font-size: 9pt !important;
-        margin-bottom: 1mm !important;
+        color: #6a6f77 !important;
     }
 
-    .portfolio-card figcaption span {
-        font-size: 6.8pt !important;
+    .client-feature-grid {
+        display: grid !important;
+        grid-template-columns: 1.4fr 1fr !important;
+        grid-template-rows: repeat(3, 1fr) !important;
+        gap: 4mm !important;
     }
 
-    /* --- 06 WHY OUR CAPTURE --- */
+    .cf-main,
+    .cf-side {
+        border: 0.5pt solid #e2ddd2 !important;
+        border-radius: 0 !important;
+    }
+
+    .cf-main {
+        grid-row: 1 / 4 !important;
+    }
+
+    .cf-main img {
+        aspect-ratio: 3 / 4 !important;
+    }
+
+    .cf-side img {
+        aspect-ratio: 16 / 6 !important;
+    }
+
+    /* --- 07 WHY OUR CAPTURE --- */
     .why-grid {
         display: grid !important;
         grid-template-columns: 1fr 1fr;
@@ -2427,7 +2627,7 @@ section {
         margin-top: 3mm !important;
     }
 
-    /* --- 06 COMPLIANCE (data table) --- */
+    /* --- 08 COMPLIANCE (data table) --- */
     .reg-table {
         border: 1pt solid #14181f !important;
         border-radius: 0 !important;
@@ -2473,7 +2673,7 @@ section {
         margin-top: 5mm;
     }
 
-    /* --- 07 VISION, MISSION & VALUES --- */
+    /* --- 09 VISION, MISSION & VALUES --- */
     .vmv-grid {
         display: grid !important;
         grid-template-columns: 1fr 1fr;
@@ -2551,7 +2751,7 @@ section {
         font-size: 6.8pt !important;
     }
 
-    /* --- 08 CONTACT --- */
+    /* --- 10 CONTACT --- */
     .contact-grid {
         display: block !important;
     }
@@ -2613,4 +2813,5 @@ section {
         color: #6a6f77;
         text-align: center;
     }
+
 }
