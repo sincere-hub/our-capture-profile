@@ -856,6 +856,31 @@
             sections.forEach(s => spy.observe(s));
         }
 
+        // Swap every photo to the compact images/print/ version so the saved
+        // PDF stays small enough to email, then restore the full-res web
+        // images afterwards. Falls back to the web image if a print copy is
+        // missing.
+        function printImages() {
+            return Array.from(document.querySelectorAll('img')).filter(img => {
+                const s = img.getAttribute('src') || '';
+                return s.startsWith('images/') && !s.startsWith('images/print/');
+            });
+        }
+        async function usePrintImages() {
+            await Promise.allSettled(printImages().map(async img => {
+                img.dataset.webSrc = img.getAttribute('src');
+                img.setAttribute('src', 'images/print/' + img.dataset.webSrc.slice('images/'.length));
+                try { await img.decode(); }
+                catch (e) { img.setAttribute('src', img.dataset.webSrc); delete img.dataset.webSrc; }
+            }));
+        }
+        function restoreWebImages() {
+            document.querySelectorAll('img[data-web-src]').forEach(img => {
+                img.setAttribute('src', img.dataset.webSrc);
+                delete img.dataset.webSrc;
+            });
+        }
+
         // Wait for the browser's web fonts before printing. Printing before they
         // load can reflow text and leave words in the wrong position in the PDF.
         async function downloadProfile() {
@@ -866,17 +891,23 @@
             // The local development address is never part of the profile itself.
             const savedTitle = document.title;
             document.title = 'Our Capture — Company Profile';
-            let titleRestored = false;
-            const restoreTitle = () => {
-                if (titleRestored) return;
-                titleRestored = true;
+            let restored = false;
+            const cleanup = () => {
+                if (restored) return;
+                restored = true;
                 document.title = savedTitle;
+                restoreWebImages();
             };
             // afterprint doesn't fire reliably on iOS Safari's share-sheet
             // print flow, so also restore on the next window focus.
-            window.addEventListener('afterprint', restoreTitle, { once: true });
-            window.addEventListener('focus', restoreTitle, { once: true });
+            window.addEventListener('afterprint', cleanup, { once: true });
+            window.addEventListener('focus', cleanup, { once: true });
+
+            await usePrintImages();
             window.print();
+            // Chrome/Edge block here until the dialog closes; Safari does not,
+            // so the afterprint / focus handlers above are the backstop.
+            setTimeout(cleanup, 1000);
         }
 
         // reveal everything before printing so nothing is invisible in the PDF
