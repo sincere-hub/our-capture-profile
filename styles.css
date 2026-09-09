@@ -1822,12 +1822,18 @@ section {
     }
 
     /* ===================== COVER PAGE ===================== */
+    /* Kept a touch under one page so it never spills a near-empty second
+       sheet; overflow:hidden is a belt-and-braces guard against the same. */
     .doc-cover {
         display: flex;
         flex-direction: column;
         min-height: 236mm;
+        overflow: hidden;
         padding: 13mm 0 12mm 7mm;
         page-break-after: always;
+        break-after: page;
+        page-break-inside: avoid;
+        break-inside: avoid;
     }
 
     .dc-top {
@@ -2004,13 +2010,19 @@ section {
         break-inside: avoid;
     }
 
+    /* rendered as a full document heading — bold and prominent, matching
+       the "Contents" heading with the same serif face and rule below it */
     .toc-particulars h3 {
-        font-family: 'Inter', sans-serif;
-        text-transform: uppercase;
-        letter-spacing: 0.15em;
-        font-size: 8pt;
-        color: #9a938a;
-        margin-bottom: 3.5mm;
+        font-family: var(--serif);
+        font-weight: 700;
+        text-transform: none;
+        letter-spacing: normal;
+        font-size: 20pt;
+        line-height: 1.1;
+        color: #14181f;
+        margin-bottom: 6mm;
+        padding-bottom: 4mm;
+        border-bottom: 1pt solid #14181f;
     }
 
     .toc-particulars table {
